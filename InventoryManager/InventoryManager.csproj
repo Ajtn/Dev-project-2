@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug-Windows</Configuration>
@@ -56,17 +56,16 @@
     </CustomCommands>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="src\" />
-    <Folder Include="Resources\" />
-  </ItemGroup>
-  <ItemGroup>
+    <Compile Include="src\DatabaseManager.cs" />
     <Compile Include="src\GameMain.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SwinGame">
       <HintPath>lib\SwinGame.dll</HintPath>
     </Reference>
+    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System" />
   </ItemGroup>

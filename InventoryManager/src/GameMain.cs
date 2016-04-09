@@ -7,23 +7,30 @@ namespace MyGame
     {
         public static void Main()
         {
+            DatabaseManager inventoryDB = new DatabaseManager("sql6.freemysqlhosting.net", "sql6114483",
+                                                               "sql6114483", "mQG7bJ3KKb");
+
+
             //Open the game window
             SwinGame.OpenGraphicsWindow("GameMain", 800, 600);
             SwinGame.ShowSwinGameSplashScreen();
-            
+
             //Run the game loop
-            while(false == SwinGame.WindowCloseRequested())
+            while (false == SwinGame.WindowCloseRequested())
             {
                 //Fetch the next batch of UI interaction
                 SwinGame.ProcessEvents();
-                
+
                 //Clear the screen and draw the framerate
                 SwinGame.ClearScreen(Color.White);
-                SwinGame.DrawFramerate(0,0);
-                
+                SwinGame.DrawFramerate(0, 0);
+
                 //Draw onto the screen
                 SwinGame.RefreshScreen(60);
             }
+
+
+
         }
     }
 }
