@@ -2,27 +2,30 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 
 namespace MyGame
 {
     public class DatabaseManager
     {
-        SqlConnection myConnection;
+        MySqlConnection myConnection;
 
-        public DatabaseManager(string dbServer, string dbName, string dbUser, string dbPW)
+        //The default constructor initializes a new MySqlConnection object with a connection string
+        public DatabaseManager(string dbServer, string dbName, string dbUser, string dbPW) 
         {
-            myConnection = new SqlConnection(
-                "Data Source=" + dbServer + ";" +
+            myConnection = new MySqlConnection(
+                "Server=" + dbServer + ";" +
                 "Database=" + dbName + ";" +
                 "Uid=" + dbUser + ";" +
-                "Pwd=" + dbPW + ";");
+                "Password=" + dbPW + ";");
         }
 
         public bool OpenDBConnection()
         {
-            myConnection.Open();
-
+            try { myConnection.Open(); }
+           
+            catch (MySqlException) { return false; }
+            
             return true;
         }
     }
