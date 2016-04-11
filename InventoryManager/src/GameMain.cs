@@ -97,8 +97,8 @@ namespace MyGame
             fTable = null;
 
             fUIElements.Add(new Button(520, 10, 120, 40, Color.DodgerBlue, "Generate List", new GenerateList()));
-            fUIElements.Add(fTable);
-            fUIElements.Add(new Button(520, 70, 120, 40, Color.DodgerBlue, "Empty", new Empty()));
+            fUIElements.Add(new Button(520, 70, 120, 40, Color.DodgerBlue, "Display Sales", new DisplaySaleTable()));
+            fUIElements.Add(fTable); 
             fUIElements.Add(new Button(520, 130, 120, 40, Color.DodgerBlue, "Empty", new Empty()));
             fUIElements.Add(new Button(520, 190, 120, 40, Color.DodgerBlue, "Empty", new Empty()));
             fUIElements.Add(new Button(520, 250, 120, 40, Color.DodgerBlue, "Empty", new Empty()));

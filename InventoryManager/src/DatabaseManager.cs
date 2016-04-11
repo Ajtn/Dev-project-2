@@ -30,7 +30,7 @@ namespace MyGame
             return true;
         }
 
-        public string[,] runQuery()
+        public string[,] runCurrentStockQuery()
         {
             string[] header = new string[] { "StockID", "ProductName", "NumberInStock"};
             string[,] data;
@@ -59,9 +59,33 @@ namespace MyGame
             return data;
         }
 
-        public string runQuery(string table)
+        public string[,] runSaleQuery()
         {
-            return null;
+            string[] header = new string[] { "StockID", "NumberSold", "SaleID" };
+            string[,] data;
+            List<String> result = new List<String>();
+
+            string myQuery = "SELECT * FROM Sale";
+
+            MySqlCommand myCommand = new MySqlCommand(myQuery, myConnection);
+            myReader = myCommand.ExecuteReader();
+
+            data = new string[5, header.Length];
+
+            int Y = 0;
+            int X = 0;
+
+            while (myReader.Read())
+            {
+                data[Y, X] = myReader.GetString("StockID");
+                X++;
+                data[Y, X] = myReader.GetString("NumberSold");
+                X++;
+                data[Y, X] = myReader.GetString("SaleID");
+                X = 0;
+                Y++;
+            }
+            return data;
         }
     }
 }

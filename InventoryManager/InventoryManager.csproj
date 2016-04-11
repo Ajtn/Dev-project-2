@@ -58,8 +58,20 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup />
   <ItemGroup>
+    <Compile Include="src\Commands\Command.cs" />
+    <Compile Include="src\Commands\DeleteID.cs" />
+    <Compile Include="src\Commands\DisplaySaleTable.cs" />
+    <Compile Include="src\Commands\Empty.cs" />
+    <Compile Include="src\Commands\GenerateList.cs" />
+    <Compile Include="src\Commands\ScrollDown.cs" />
+    <Compile Include="src\Commands\ScrollUp.cs" />
+    <Compile Include="src\Commands\SetField.cs" />
     <Compile Include="src\DatabaseManager.cs" />
     <Compile Include="src\GameMain.cs" />
+    <Compile Include="src\UIElements\Button.cs" />
+    <Compile Include="src\UIElements\ClickableElement.cs" />
+    <Compile Include="src\UIElements\Table.cs" />
+    <Compile Include="src\UIElements\UIElement.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
@@ -72,6 +84,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System" />
+    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
