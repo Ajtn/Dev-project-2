@@ -23,3 +23,4 @@ C:\Users\Lionel\Desktop\DP2\Dev-project-2\InventoryManager\bin\Debug\MyGame.pdb
 C:\Users\Lionel\Desktop\DP2\Dev-project-2\InventoryManager\bin\Debug\SwinGame.dll
 C:\Users\Lionel\Desktop\DP2\Dev-project-2\InventoryManager\obj\x86\Debug-Mac\MyGame.exe
 C:\Users\Lionel\Desktop\DP2\Dev-project-2\InventoryManager\obj\x86\Debug-Mac\MyGame.pdb
+C:\Users\Lionel\Desktop\DP2\Dev-project-2\InventoryManager\obj\x86\Debug-Mac\InventoryManager.csprojResolveAssemblyReference.cache
