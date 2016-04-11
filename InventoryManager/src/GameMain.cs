@@ -13,7 +13,8 @@ namespace MyGame
             {
                 //Open the game window
                 SwinGame.OpenGraphicsWindow("GameMain", 800, 600);
-                SwinGame.ShowSwinGameSplashScreen();
+                //SwinGame.ShowSwinGameSplashScreen();
+                SwinGame.DrawText(inventoryDB.runQuery("Current Stock", "*"), Color.Black, 25, 25);
 
                 //Run the game loop
                 while (false == SwinGame.WindowCloseRequested())
