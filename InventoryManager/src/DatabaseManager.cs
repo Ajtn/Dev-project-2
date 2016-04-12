@@ -30,21 +30,33 @@ namespace MyGame
             return true;
         }
 
-        public string runQuery(string table, string query)
+        public string[,] runQuery()
         {
-            string result = "";
-            string myQuery = "SELECT " + query + " FROM " + "/'/" + table + "/'/";
+            string[] header = new string[] { "StockID", "ProductName", "NumberInStock"};
+            string[,] data;
+            List<String> result = new List<String>();
+
+            string myQuery = "SELECT * FROM CurrentStock";
 
             MySqlCommand myCommand = new MySqlCommand(myQuery, myConnection);
             myReader = myCommand.ExecuteReader();
 
+            data = new string[2, header.Length];
+
+            int Y = 0;
+            int X = 0;
+
             while (myReader.Read())
             {
-                result += myReader.GetString("Stock_ID");
+                data[Y, X] = myReader.GetString("StockID");
+                X++;
+                data[Y, X] = myReader.GetString("ProductName");
+                X++;
+                data[Y, X] = myReader.GetString("NumberInStock");
+                X = 0;
+                Y++;
             }
-
-            return result;
-       
+            return data;
         }
 
         public string runQuery(string table)
