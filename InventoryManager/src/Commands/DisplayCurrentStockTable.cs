@@ -6,16 +6,16 @@ using SwinGameSDK;
 
 namespace MyGame
 {
-    public class GenerateList : Command
+    public class DisplayCurrentStockTable : Command
     {
-        public override void Do(int i, int j)
+        public override void Do(int x, int y)
         {
             /*GameMain.pUIElements.Remove(GameMain.pTable);
             GameMain.pTable = new Table(10, 10, 490, 500, Color.Black, TestData.GenerateData());
             GameMain.pTable.pHeader = new string[] { "ID", "Numbers", "Data" };
             GameMain.pUIElements.Add(GameMain.pTable);*/
 
-            GameMain.pTable = new Table(10, 10, 490, 500, Color.Black, GameMain.inventoryDB.runCurrentStockQuery());
+            GameMain.pTable = new Table(10, 10, 490, 500, Color.Black, GameMain.inventoryDB.runDatabaseQuery(new string[] { "StockID", "ProductName", "NumberInStock" }, "CurrentStock"));
             GameMain.pTable.pHeader = new string[] {"Stock ID", "Number Sold", "Sale ID"};
             GameMain.pUIElements.Add(GameMain.pTable);
         }

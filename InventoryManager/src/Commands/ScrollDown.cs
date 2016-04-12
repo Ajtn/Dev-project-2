@@ -7,9 +7,10 @@ namespace MyGame
 {
     public class ScrollDown : Command
     {
-        public override void Do(int i, int j)
+        public override void Do(int x, int y)
         {
             GameMain.pTable.pBuffer++;
         }
+
     }
 }

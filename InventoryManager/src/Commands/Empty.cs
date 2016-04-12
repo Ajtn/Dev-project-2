@@ -7,7 +7,7 @@ namespace MyGame
 {
     class Empty : Command
     {
-        public override void Do(int aX, int ay)
+        public override void Do(int x, int y)
         {
         }
     }

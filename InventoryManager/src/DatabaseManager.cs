@@ -30,135 +30,32 @@ namespace MyGame
             return true;
         }
 
-        public string[,] runCurrentStockQuery()
+        public string[,] runDatabaseQuery(string[] dbHeaders, string tableName)
         {
             MySqlDataReader myReader;
-            string[] header = new string[] { "StockID", "ProductName", "NumberInStock"};
             string[,] data;
             List<String> result = new List<String>();
 
-            string myQuery = "SELECT * FROM CurrentStock";
+            string myQuery = "SELECT * FROM " + tableName;
+            string myQuery2 = "SELECT COUNT(*) FROM " +tableName;
+
+            MySqlCommand myCommand2 = new MySqlCommand(myQuery2, myConnection); 
 
             MySqlCommand myCommand = new MySqlCommand(myQuery, myConnection);
+            int rows = Convert.ToInt32(myCommand2.ExecuteScalar());
             myReader = myCommand.ExecuteReader();
 
-            data = new string[2, header.Length];
+            data = new string[rows, dbHeaders.Length];
 
-            int Y = 0;
-            int X = 0;
+                for (int Y = 0; Y < rows; Y++ )
+                {
+                    myReader.Read();
+                    for (int i = 0; i < dbHeaders.Length; i++)
+                    {
+                        data[Y, i] = myReader.GetString(dbHeaders[i]);
+                    }
+                }
 
-            while (myReader.Read())
-            {
-                data[Y, X] = myReader.GetString("StockID");
-                X++;
-                data[Y, X] = myReader.GetString("ProductName");
-                X++;
-                data[Y, X] = myReader.GetString("NumberInStock");
-                X = 0;
-                Y++;
-            }
-            myReader.Close();
-            return data;
-        }
-
-        public string[,] runSaleQuery()
-        {
-            MySqlDataReader myReader;
-            string[] header = new string[] { "StockID", "NumberSold", "SaleID" };
-            string[,] data;
-            List<String> result = new List<String>();
-
-            string myQuery = "SELECT * FROM Sale";
-
-            MySqlCommand myCommand = new MySqlCommand(myQuery, myConnection);
-            myReader = myCommand.ExecuteReader();
-
-            data = new string[5, header.Length];
-
-            int Y = 0;
-            int X = 0;
-
-            while (myReader.Read())
-            {
-                data[Y, X] = myReader.GetString("StockID");
-                X++;
-                data[Y, X] = myReader.GetString("NumberSold");
-                X++;
-                data[Y, X] = myReader.GetString("SaleID");
-                X = 0;
-                Y++;
-            }
-            myReader.Close();
-            return data;
-        }
-
-        public string[,] runOrdersQuery()
-        {
-            MySqlDataReader myReader;
-            string[] header = new string[] { "OrderID", "DateOrdered", "DateExpected", "Processed", "ValueOfOrder" };
-            string[,] data;
-            List<String> result = new List<String>();
-
-            string myQuery = "SELECT * FROM Orders";
-
-            MySqlCommand myCommand = new MySqlCommand(myQuery, myConnection);
-            myReader = myCommand.ExecuteReader();
-
-            data = new string[10, header.Length];
-
-            int Y = 0;
-            int X = 0;
-
-            while (myReader.Read())
-            {
-                data[Y, X] = myReader.GetString("OrderID");
-                X++;
-                data[Y, X] = myReader.GetString("DateOrdered");
-                X++;
-                data[Y, X] = myReader.GetString("DateExpected");
-                X++;
-                data[Y, X] = myReader.GetString("Processed");
-                X++;
-                data[Y, X] = myReader.GetString("ValueOfOrder");
-                X = 0;
-                Y++;
-            }
-            myReader.Close();
-            return data;
-        }
-
-
-        public string[,] runItemsQuery()
-        {
-            MySqlDataReader myReader;
-            string[] header = new string[] { "OrderID", "DateOrdered", "DateExpected", "Processed", "ValueOfOrder" };
-            string[,] data;
-            List<String> result = new List<String>();
-
-            string myQuery = "SELECT * FROM StockItem";
-
-            MySqlCommand myCommand = new MySqlCommand(myQuery, myConnection);
-            myReader = myCommand.ExecuteReader();
-
-            data = new string[5, header.Length];
-
-            int Y = 0;
-            int X = 0;
-
-            while (myReader.Read())
-            {
-                data[Y, X] = myReader.GetString("StockID");
-                X++;
-                data[Y, X] = myReader.GetString("ProductName");
-                X++;
-                data[Y, X] = myReader.GetString("SalePrice");
-                X++;
-                data[Y, X] = myReader.GetString("OrderPrice");
-                X++;
-                data[Y, X] = myReader.GetString("AverageSold");
-                X = 0;
-                Y++;
-            }
             myReader.Close();
             return data;
         }

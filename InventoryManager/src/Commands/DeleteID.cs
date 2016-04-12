@@ -7,7 +7,7 @@ using System.Windows.Forms;
 namespace MyGame
 {
     public class DeleteID : Command
-    {  
+    {
         public override void Do(int x, int y)
         {
             int lSelectedID;
@@ -26,5 +26,6 @@ namespace MyGame
                 }
             }
         }
+
     }
 }

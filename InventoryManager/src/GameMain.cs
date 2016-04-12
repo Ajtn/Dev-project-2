@@ -96,7 +96,7 @@ namespace MyGame
             fUIElements = new List<UIElement>();
             fTable = null;
 
-            fUIElements.Add(new Button(520, 10, 120, 40, Color.DodgerBlue, "Generate List", new GenerateList()));
+            fUIElements.Add(new Button(520, 10, 120, 40, Color.DodgerBlue, "Generate List", new DisplayCurrentStockTable()));
             fUIElements.Add(new Button(520, 70, 120, 40, Color.DodgerBlue, "Display Sales", new DisplaySaleTable()));
            // fUIElements.Add(fTable); 
             fUIElements.Add(new Button(520, 130, 120, 40, Color.DodgerBlue, "Display Orders", new DisplayOrdersTable()));

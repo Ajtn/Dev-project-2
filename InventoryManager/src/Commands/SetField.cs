@@ -8,8 +8,9 @@ namespace MyGame
 {
     public class SetField : Command
     {
-        public override void Do(int i, int j)
+        public override void Do(int x, int y)
         {
         }
+
     }
 }
