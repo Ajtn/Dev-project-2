@@ -21,7 +21,7 @@ namespace MyGame
                 "Password=" + dbPW + ";");
         }
 
-        public bool OpenDBConnection()
+        public bool OpenDBConnection() //Opens a connection on the MySqlConnection object
         {
             try { myConnection.Open(); }
            
@@ -30,33 +30,35 @@ namespace MyGame
             return true;
         }
 
-        public string[,] runDatabaseQuery(string[] dbHeaders, string tableName)
+        public string[,] runDatabaseQuery(string[] dbHeaders, string tableName) //Method for handling database ueries
         {
-            MySqlDataReader myReader;
+            MySqlDataReader myReader; 
             string[,] data;
             List<String> result = new List<String>();
 
-            string myQuery = "SELECT * FROM " + tableName;
-            string myQuery2 = "SELECT COUNT(*) FROM " +tableName;
+            string myQuery = "SELECT * FROM " + tableName; //sets the main query string
+            string myQuery2 = "SELECT COUNT(*) FROM " +tableName; //the query string responsible for requesting the number of rows
 
-            MySqlCommand myCommand2 = new MySqlCommand(myQuery2, myConnection); 
-
+            //Create and initialise command objects
+            MySqlCommand myCommand2 = new MySqlCommand(myQuery2, myConnection);
             MySqlCommand myCommand = new MySqlCommand(myQuery, myConnection);
-            int rows = Convert.ToInt32(myCommand2.ExecuteScalar());
-            myReader = myCommand.ExecuteReader();
 
-            data = new string[rows, dbHeaders.Length];
+            int rows = Convert.ToInt32(myCommand2.ExecuteScalar()); //Runs the second command, returning a long converted to an int
+            myReader = myCommand.ExecuteReader(); //initialises the reader object
 
+            data = new string[rows, dbHeaders.Length]; //Set a new 2d array with the amount of rows and amount of columns
+
+                //Loop through each element in our data array, reading in the appropriate data from the database
                 for (int Y = 0; Y < rows; Y++ )
                 {
-                    myReader.Read();
+                    myReader.Read(); //called each iteration of the loop in order to read in new rows
                     for (int i = 0; i < dbHeaders.Length; i++)
                     {
                         data[Y, i] = myReader.GetString(dbHeaders[i]);
                     }
                 }
 
-            myReader.Close();
+            myReader.Close(); //close the data reader
             return data;
         }
     }
