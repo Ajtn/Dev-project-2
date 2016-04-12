@@ -61,5 +61,10 @@ namespace MyGame
             myReader.Close(); //close the data reader
             return data;
         }
+
+        public bool deleteRecordFromDatabase()
+        {
+            return true;
+        }
     }
 }

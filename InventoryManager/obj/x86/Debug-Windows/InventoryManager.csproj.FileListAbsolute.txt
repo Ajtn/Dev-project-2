@@ -25,3 +25,4 @@ C:\Users\Lionel\Desktop\DP2\Dev-project-2\InventoryManager\bin\Debug\SwinGame.dl
 C:\Users\Lionel\Desktop\DP2\Dev-project-2\InventoryManager\obj\x86\Debug-Windows\MyGame.exe
 C:\Users\Lionel\Desktop\DP2\Dev-project-2\InventoryManager\bin\Debug\MyGame.pdb
 C:\Users\Lionel\Desktop\DP2\Dev-project-2\InventoryManager\obj\x86\Debug-Windows\MyGame.pdb
+C:\Users\Lionel\Desktop\DP2\Dev-project-2\InventoryManager\obj\x86\Debug-Windows\InventoryManager.csprojResolveAssemblyReference.cache
