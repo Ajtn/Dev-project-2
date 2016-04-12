@@ -1,3 +1,4 @@
+C:\Users\Lionel\Desktop\DP2\Dev-project-2\InventoryManager\bin\Debug\MyGame.exe.config
 C:\Users\Lionel\Desktop\DP2\Dev-project-2\InventoryManager\bin\Debug\Resources\animations\startup.txt
 C:\Users\Lionel\Desktop\DP2\Dev-project-2\InventoryManager\bin\Debug\Resources\bundles\FileDialog.txt
 C:\Users\Lionel\Desktop\DP2\Dev-project-2\InventoryManager\bin\Debug\Resources\bundles\splash.txt
@@ -20,7 +21,7 @@ C:\Users\Lionel\Desktop\DP2\Dev-project-2\InventoryManager\bin\Debug\Resources\S
 C:\Users\Lionel\Desktop\DP2\Dev-project-2\InventoryManager\bin\Debug\Resources\SwinGame.ico
 C:\Users\Lionel\Desktop\DP2\Dev-project-2\InventoryManager\bin\Debug\MyGame.exe
 C:\Users\Lionel\Desktop\DP2\Dev-project-2\InventoryManager\bin\Debug\MyGame.pdb
+C:\Users\Lionel\Desktop\DP2\Dev-project-2\InventoryManager\bin\Debug\MySql.Data.dll
 C:\Users\Lionel\Desktop\DP2\Dev-project-2\InventoryManager\bin\Debug\SwinGame.dll
 C:\Users\Lionel\Desktop\DP2\Dev-project-2\InventoryManager\obj\x86\Debug-Mac\MyGame.exe
 C:\Users\Lionel\Desktop\DP2\Dev-project-2\InventoryManager\obj\x86\Debug-Mac\MyGame.pdb
-C:\Users\Lionel\Desktop\DP2\Dev-project-2\InventoryManager\obj\x86\Debug-Mac\InventoryManager.csprojResolveAssemblyReference.cache
