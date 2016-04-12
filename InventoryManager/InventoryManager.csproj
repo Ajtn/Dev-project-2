@@ -60,6 +60,8 @@
   <ItemGroup>
     <Compile Include="src\Commands\Command.cs" />
     <Compile Include="src\Commands\DeleteID.cs" />
+    <Compile Include="src\Commands\DisplayItemTable.cs" />
+    <Compile Include="src\Commands\DisplayOrdersTable.cs" />
     <Compile Include="src\Commands\DisplaySaleTable.cs" />
     <Compile Include="src\Commands\Empty.cs" />
     <Compile Include="src\Commands\GenerateList.cs" />
