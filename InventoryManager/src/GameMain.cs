@@ -22,11 +22,10 @@ namespace MyGame
 
         public static void Main()
         {
-            SwinGame.OpenGraphicsWindow("Test", 1220, 670);
+            SwinGame.OpenGraphicsWindow("Pharmacy", 1220, 670);
             SwinGame.LoadFontNamed("courier", "cour.ttf", 14);
 
             inventoryDB.OpenDBConnection();
-
             PopulateElements();
 
             do
@@ -72,7 +71,7 @@ namespace MyGame
                         }
                     }
                 }
-            } while (!(SwinGame.MouseClicked(MouseButton.LeftButton)));
+            } while (!(SwinGame.MouseClicked(MouseButton.LeftButton)) && !SwinGame.WindowCloseRequested());
         }
 
         public static void Draw()
