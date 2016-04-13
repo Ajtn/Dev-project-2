@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using SwinGameSDK;
 
 namespace MyGame
 {
@@ -17,7 +18,8 @@ namespace MyGame
             if (lTemp == DialogResult.Yes)
             {
                 lSelectedID = GameMain.pTable.GetID(x, y);
-                MessageBox.Show("ID " + lSelectedID + " could not be deleted.", "COULD NOT DELETE", MessageBoxButtons.OK);
+                GameMain.inventoryDB.deleteDatabaseRow(lSelectedID,  GameMain.pTable.pTableName);
+                MessageBox.Show("ID: " + lSelectedID + " successfully deleted.", "Success!", MessageBoxButtons.OK);
             }
         }
 

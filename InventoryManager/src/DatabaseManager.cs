@@ -21,7 +21,7 @@ namespace MyGame
                 "Password=" + dbPW + ";");
         }
 
-        public bool OpenDBConnection() //Opens a connection on the MySqlConnection object
+        public bool openDBConnection() //Opens a connection on the MySqlConnection object
         {
             try { myConnection.Open(); }
            
@@ -60,6 +60,13 @@ namespace MyGame
 
             myReader.Close(); //close the data reader
             return data;
+        }
+
+        public void deleteDatabaseRow(int id, string tableName )
+        {
+            string myQuery = "DELETE FROM " + tableName + " WHERE " + GameMain.pTable.pHeader[0].Replace(" ", string.Empty) + " =" + id;
+            MySqlCommand myCommand = new MySqlCommand(myQuery, myConnection);
+            myCommand.ExecuteNonQuery();
         }
     }
 }

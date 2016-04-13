@@ -22,13 +22,14 @@ namespace MyGame
 
         public static Button pCurrentTable { get { return fCurrentTable; } }
         public static Table pTable { get { return fTable; } set { fTable = value; } }
+        public static List<Button> pTabButtons { get { return fTabButtons; } }
 
         public static void Main()
         {
             SwinGame.OpenGraphicsWindow("Peoples Health Pharmacy", 1220, 670);
             SwinGame.LoadFontNamed("courier", "cour.ttf", 14);
 
-            inventoryDB.OpenDBConnection();
+            inventoryDB.openDBConnection();
             PopulateElements();
 
             do
