@@ -9,6 +9,9 @@ namespace MyGame
 {
     public static class GameMain
     {
+        public const int TABLE_HEIGHT = 500;
+        public const int TABLE_WIDTH = 1050;
+
         public static DatabaseManager inventoryDB = new DatabaseManager("sql6.freemysqlhosting.net", "sql6114576",
                                                                 "sql6114576", "BzSIN9yCih");
         private static List<UIElement> fUIElements;
@@ -19,7 +22,7 @@ namespace MyGame
 
         public static void Main()
         {
-            SwinGame.OpenGraphicsWindow("Test", 650, 520);
+            SwinGame.OpenGraphicsWindow("Test", 1200, 670);
             SwinGame.LoadFontNamed("courier", "cour.ttf", 14);
 
             inventoryDB.OpenDBConnection();
@@ -84,8 +87,8 @@ namespace MyGame
 
             if (fTable == null)
             {
-                SwinGame.FillRectangle(Color.LightBlue, 11, 11, 490, 500);
-                SwinGame.DrawRectangle(Color.Black, 10, 10, 490, 500);
+                SwinGame.FillRectangle(Color.LightBlue, 10, 10, GameMain.TABLE_WIDTH, GameMain.TABLE_HEIGHT);
+                SwinGame.DrawRectangle(Color.Black, 10, 10, GameMain.TABLE_WIDTH, GameMain.TABLE_HEIGHT);
             }
 
             SwinGame.RefreshScreen();
@@ -96,13 +99,16 @@ namespace MyGame
             fUIElements = new List<UIElement>();
             fTable = null;
 
-            fUIElements.Add(new Button(520, 10, 120, 40, Color.DodgerBlue, "Generate List", new DisplayCurrentStockTable()));
-            fUIElements.Add(new Button(520, 70, 120, 40, Color.DodgerBlue, "Display Sales", new DisplaySaleTable()));
-           // fUIElements.Add(fTable); 
-            fUIElements.Add(new Button(520, 130, 120, 40, Color.DodgerBlue, "Display Orders", new DisplayOrdersTable()));
-            fUIElements.Add(new Button(520, 190, 120, 40, Color.DodgerBlue, "Display Items", new DisplayItemTable()));
-            fUIElements.Add(new Button(520, 250, 120, 40, Color.DodgerBlue, "Empty", new Empty()));
-            fUIElements.Add(new Button(520, 310, 120, 40, Color.DodgerBlue, "Empty", new Empty()));
+            fUIElements.Add(new Button(9 + TABLE_WIDTH, 10, 150, 40, Color.DodgerBlue, "Generate List", new DisplayCurrentStockTable()));
+            fUIElements.Add(new Button(9 + TABLE_WIDTH, 49, 150, 40, Color.DodgerBlue, "Display Sales", new DisplaySaleTable()));
+            fUIElements.Add(new Button(9 + TABLE_WIDTH, 88, 150, 40, Color.DodgerBlue, "Display Orders", new DisplayOrdersTable()));
+            fUIElements.Add(new Button(9 + TABLE_WIDTH, 127, 150, 40, Color.DodgerBlue, "Display Items", new DisplayItemTable()));
+            fUIElements.Add(new Button(9 + TABLE_WIDTH, 166, 150, 40, Color.DodgerBlue, "Empty", new Empty()));
+            fUIElements.Add(new Button(9 + TABLE_WIDTH, 205, 150, 40, Color.DodgerBlue, "Empty", new Empty()));
+            fUIElements.Add(new Button(9 + TABLE_WIDTH, 244, 150, 40, Color.DodgerBlue, "Empty", new Empty()));
+            fUIElements.Add(new Button(9 + TABLE_WIDTH, 283, 150, 40, Color.DodgerBlue, "Empty", new Empty()));
+            fUIElements.Add(new Button(9 + TABLE_WIDTH, 322, 150, 40, Color.DodgerBlue, "Empty", new Empty()));
+            fUIElements.Add(new Button(9 + TABLE_WIDTH, 361, 150, 40, Color.DodgerBlue, "Empty", new Empty()));
         }
     }
 }

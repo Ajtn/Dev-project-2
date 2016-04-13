@@ -109,6 +109,7 @@
     <Compile Include="src\GameMain.cs" />
     <Compile Include="src\UIElements\Button.cs" />
     <Compile Include="src\UIElements\ClickableElement.cs" />
+    <Compile Include="src\UIElements\Scrollbar.cs" />
     <Compile Include="src\UIElements\Table.cs" />
     <Compile Include="src\UIElements\UIElement.cs" />
   </ItemGroup>
