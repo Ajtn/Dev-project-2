@@ -22,7 +22,7 @@ namespace MyGame
 
         public static void Main()
         {
-            SwinGame.OpenGraphicsWindow("Test", 1200, 670);
+            SwinGame.OpenGraphicsWindow("Test", 1220, 670);
             SwinGame.LoadFontNamed("courier", "cour.ttf", 14);
 
             inventoryDB.OpenDBConnection();

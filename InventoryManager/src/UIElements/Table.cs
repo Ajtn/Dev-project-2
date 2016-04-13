@@ -10,7 +10,7 @@ namespace MyGame
         public const int TEXT_BORDER = 9;
         public const int SCROLL_WIDTH = 20;
         public const int CELL_HEIGHT = 25;
-        public const int ID_WIDTH = 70;
+        public const int ID_WIDTH = 90;
         public const int SET_WIDTH = 50;
         public const int DELETE_WIDTH = 70;
 
@@ -40,7 +40,7 @@ namespace MyGame
 
             fData = aData;
             fListWidth = aWidth - SCROLL_WIDTH - SET_WIDTH - DELETE_WIDTH; 
-            fCellWidth = fListWidth - ID_WIDTH / aData.GetLength(1);
+            fCellWidth = (fListWidth - ID_WIDTH) / (aData.GetLength(1) - 1);
             fSetButtons = new Button[fTotalDisplayed];
             fDeleteButtons = new Button[fTotalDisplayed];
 
@@ -63,10 +63,13 @@ namespace MyGame
             SwinGame.FillRectangle(Color.DodgerBlue, fX, fY, fListWidth + SET_WIDTH + DELETE_WIDTH, CELL_HEIGHT);
             SwinGame.DrawRectangle(Color.Black, fX, fY, fListWidth + SET_WIDTH + DELETE_WIDTH, CELL_HEIGHT);
             
-            // draw eader text
+            // draw header text
             for (int i = 0; i < fHeader.Length; i++)
             {
-                SwinGame.DrawText(fHeader[i], Color.Black, (float)(fCellWidth * i + TEXT_BORDER + fX), fY + TEXT_BORDER);
+                if (i == 0)
+                    SwinGame.DrawText(fHeader[i], Color.Black, (float)fX + TEXT_BORDER, fY + TEXT_BORDER);
+                else
+                    SwinGame.DrawText(fHeader[i], Color.Black, (float)fX + fCellWidth * (i - 1) + TEXT_BORDER + ID_WIDTH, fY + TEXT_BORDER);
             }
 
             DrawData();
@@ -76,29 +79,32 @@ namespace MyGame
 
         public void DrawData()
         {
-            // Loop through array
-            for (int j = 0 + fBuffer; j < fBuffer + fTotalDisplayed; j++)
+            // print background
+            for (int i = 0; i < fData.GetLength(0); i++)
             {
                 // print a darker blue if mod 2 is = 0
-                if (j % 2 != 0)
-                    SwinGame.FillRectangle(Color.PowderBlue, fX, fY + CELL_HEIGHT, fListWidth, CELL_HEIGHT);
+                if (i % 2 != 0)
+                    SwinGame.FillRectangle(Color.PowderBlue, fX, fY + CELL_HEIGHT * (i + 1), fListWidth, CELL_HEIGHT);
                 else
-                    SwinGame.FillRectangle(Color.White, fX, fY + CELL_HEIGHT, fListWidth, CELL_HEIGHT);
+                    SwinGame.FillRectangle(Color.White, fX, fY + CELL_HEIGHT * (i + 1), fListWidth, CELL_HEIGHT);
+            }
 
+            // loop through array
+            for (int j = 0 + fBuffer; j < fBuffer + fTotalDisplayed; j++)
+            {
                 for (int i = 0; i < fData.GetLength(1); i++)
                 {
-
                     // print cell outline
                     if (i == 0)
-                        SwinGame.DrawRectangle(fColor, (fCellWidth * i) + fX, CELL_HEIGHT * (j - fBuffer) + fY + CELL_HEIGHT, ID_WIDTH, CELL_HEIGHT);
+                        SwinGame.DrawRectangle(Color.Black, fX, CELL_HEIGHT * j + fY + CELL_HEIGHT, ID_WIDTH, CELL_HEIGHT);
                     else
-                        SwinGame.DrawRectangle(fColor, (ID_WIDTH + (fCellWidth * (i - 1))) + fX, CELL_HEIGHT * (j - fBuffer) + fY + CELL_HEIGHT, fCellWidth, CELL_HEIGHT);
+                        SwinGame.DrawRectangle(Color.Black, ID_WIDTH + (fCellWidth * (i - 1)) + fX, CELL_HEIGHT * j + fY + CELL_HEIGHT, fCellWidth, CELL_HEIGHT);
 
                     // print text
                     if (i == 0)
-                        SwinGame.DrawText(fData[j, i], Color.Black, fX + TEXT_BORDER, (float)(CELL_HEIGHT * (j - fBuffer) + TEXT_BORDER + fY + CELL_HEIGHT));
+                        SwinGame.DrawText(fData[j, 0], Color.Black, fX + TEXT_BORDER, (float)(CELL_HEIGHT * (j - fBuffer) + TEXT_BORDER + fY + CELL_HEIGHT));
                     else
-                        SwinGame.DrawRectangle(fColor, (ID_WIDTH + (fCellWidth * (i - 1))) + fX + TEXT_BORDER, CELL_HEIGHT * (j - fBuffer) + fY + CELL_HEIGHT, fCellWidth, CELL_HEIGHT);
+                        SwinGame.DrawText(fData[j, i], Color.Black, (ID_WIDTH + (fCellWidth * (i - 1))) + fX + TEXT_BORDER, CELL_HEIGHT * (j - fBuffer) + fY + CELL_HEIGHT + TEXT_BORDER);
                 }
             }
         }

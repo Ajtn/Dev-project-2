@@ -20,7 +20,7 @@ namespace MyGame
                 {
                     if (y > GameMain.pTable.pY + Table.CELL_HEIGHT * (i + 1) && y < GameMain.pTable.pY + Table.CELL_HEIGHT * (i + 2))
                     {
-                        lSelectedID = i + GameMain.pTable.pBuffer + 1;
+                        lSelectedID = Int32.Parse(GameMain.pTable.pData[i + GameMain.pTable.pBuffer, 0]);
                         MessageBox.Show("ID " + lSelectedID + " could not be deleted.", "COULD NOT DELETE", MessageBoxButtons.OK);
                     }
                 }
