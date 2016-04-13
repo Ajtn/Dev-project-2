@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using SwinGameSDK;
+using System.Windows.Forms;
 
 namespace MyGame
 {
-    public class SetField : Command
+    public class Add : Command
     {
+        public Add() {}
+
         public override void Do(int x, int y)
         {
             if (GameMain.pTable != null)
