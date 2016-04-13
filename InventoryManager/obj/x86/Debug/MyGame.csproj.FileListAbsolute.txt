@@ -32,3 +32,6 @@ C:\Users\Marcus Crisafi\Desktop\DevProjects Interface\bin\Debug\MySql.Data.dll
 C:\Users\Lionel\Desktop\DP2\Dev-project-2\InventoryManager\bin\Debug\MyGame.exe.config
 C:\Users\Lionel\Desktop\DP2\Dev-project-2\InventoryManager\obj\x86\Debug\MyGame.exe
 C:\Users\Lionel\Desktop\DP2\Dev-project-2\InventoryManager\obj\x86\Debug\MyGame.pdb
+C:\Users\Marcus Crisafi\Desktop\DP2\Dev-project-2\InventoryManager\bin\Debug\MyGame.exe.config
+C:\Users\Marcus Crisafi\Desktop\DP2\Dev-project-2\InventoryManager\obj\x86\Debug\MyGame.exe
+C:\Users\Marcus Crisafi\Desktop\DP2\Dev-project-2\InventoryManager\obj\x86\Debug\MyGame.pdb
