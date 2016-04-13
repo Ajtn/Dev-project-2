@@ -21,14 +21,14 @@ namespace MyGame
         protected int fTotalDisplayed;
         protected Button[] fSetButtons;
         protected Button[] fDeleteButtons;
-        protected Scrollbar fScrollBar; 
+        protected Scrollbar fScrollBar;
         protected int fListWidth;
 
         public Scrollbar pScrollBar { get { return fScrollBar; } }
         public int pTotalDisplayed { get { return fTotalDisplayed; } }
         public string[,] pData { get { return fData; } }
         public int pBuffer { get { return fBuffer; } set { fBuffer = value; } }
-        public string[] pHeader { get { return fHeader; } set { fHeader = value; } } 
+        public string[] pHeader { get { return fHeader; } set { fHeader = value; } }
 
         public Table(int aX, int aY, int aWidth, int aHeight, Color aColor, string[,] aData)
             : base(aX, aY, aWidth, aHeight, aColor)
@@ -39,7 +39,7 @@ namespace MyGame
                 fTotalDisplayed = 19;
 
             fData = aData;
-            fListWidth = aWidth - SCROLL_WIDTH - SET_WIDTH - DELETE_WIDTH; 
+            fListWidth = aWidth - SCROLL_WIDTH - SET_WIDTH - DELETE_WIDTH;
             fCellWidth = (fListWidth - ID_WIDTH) / (aData.GetLength(1) - 1);
             fSetButtons = new Button[fTotalDisplayed];
             fDeleteButtons = new Button[fTotalDisplayed];
@@ -50,7 +50,7 @@ namespace MyGame
             {
                 fSetButtons[i] = new Button(aX + fListWidth, aY + CELL_HEIGHT * i + CELL_HEIGHT, SET_WIDTH, CELL_HEIGHT, Color.PowderBlue, "Set", new SetField());
                 fDeleteButtons[i] = new Button(aX + fListWidth + SET_WIDTH, aY + CELL_HEIGHT * i + CELL_HEIGHT, DELETE_WIDTH, CELL_HEIGHT, Color.PowderBlue, "Delete", new DeleteID());
-            } 
+            }
         }
 
         public override void Draw()
@@ -58,11 +58,11 @@ namespace MyGame
             // draw table outline and background
             SwinGame.FillRectangle(Color.LightCyan, fX, fY, fWidth, fHeight);
             SwinGame.DrawRectangle(Color.Black, fX, fY, fWidth, fHeight);
-            
+
             // draw header background and outline
             SwinGame.FillRectangle(Color.DodgerBlue, fX, fY, fListWidth + SET_WIDTH + DELETE_WIDTH, CELL_HEIGHT);
             SwinGame.DrawRectangle(Color.Black, fX, fY, fListWidth + SET_WIDTH + DELETE_WIDTH, CELL_HEIGHT);
-            
+
             // draw header text
             for (int i = 0; i < fHeader.Length; i++)
             {
@@ -119,7 +119,18 @@ namespace MyGame
             }
         }
 
-        public override void OnClick(Point2D aPoint)
+        public int GetID(int x, int y)
+        {
+            for (int i = 0; i < GameMain.pTable.pTotalDisplayed; i++)
+            {
+                if (y > fY + CELL_HEIGHT * (i + 1) && y < fY + CELL_HEIGHT * (i + 2))
+                    return Int32.Parse(pData[i + pBuffer, 0]);
+            }
+            return 0;
+        }
+
+
+public override void OnClick(Point2D aPoint)
         {
             for (int i = 0; i < fSetButtons.Length; i++)
             {

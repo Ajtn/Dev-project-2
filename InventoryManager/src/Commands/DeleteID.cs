@@ -16,14 +16,8 @@ namespace MyGame
 
             if (lTemp == DialogResult.Yes)
             {
-                for (int i = 0; i < GameMain.pTable.pTotalDisplayed; i++)
-                {
-                    if (y > GameMain.pTable.pY + Table.CELL_HEIGHT * (i + 1) && y < GameMain.pTable.pY + Table.CELL_HEIGHT * (i + 2))
-                    {
-                        lSelectedID = Int32.Parse(GameMain.pTable.pData[i + GameMain.pTable.pBuffer, 0]);
-                        MessageBox.Show("ID " + lSelectedID + " could not be deleted.", "COULD NOT DELETE", MessageBoxButtons.OK);
-                    }
-                }
+                lSelectedID = GameMain.pTable.GetID(x, y);
+                MessageBox.Show("ID " + lSelectedID + " could not be deleted.", "COULD NOT DELETE", MessageBoxButtons.OK);
             }
         }
 
