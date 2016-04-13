@@ -14,11 +14,13 @@ namespace MyGame
 
         public static DatabaseManager inventoryDB = new DatabaseManager("sql6.freemysqlhosting.net", "sql6114576",
                                                                 "sql6114576", "BzSIN9yCih");
-        private static List<UIElement> fUIElements;
+//private static List<UIElement> fUIElements;
         private static Table fTable;
+        private static Button fCurrentTable;
+        private static List<Button> fTabButtons;
 
         public static Table pTable { get { return fTable; } set { fTable = value; } }
-        public static List<UIElement> pUIElements { get { return fUIElements; } set { fUIElements = value; } }
+        //public static List<UIElement> pUIElements { get { return fUIElements; } set { fUIElements = value; } }
 
         public static void Main()
         {
@@ -62,15 +64,23 @@ namespace MyGame
 
                 if (SwinGame.MouseClicked(MouseButton.LeftButton))
                 {
-                    foreach (ClickableElement e in fUIElements)
+                    if (fTable != null && SwinGame.PointInRect(SwinGame.MousePosition(), fTable.pClickbox))
                     {
-                        if (SwinGame.PointInRect(SwinGame.MousePosition(), e.pClickbox))
+                        fTable.OnClick(SwinGame.MousePosition());
+                        break;
+                    }
+
+                    foreach (Button b in fTabButtons)
+                    {
+                        if (b != null && SwinGame.PointInRect(SwinGame.MousePosition(), b.pClickbox))
                         {
-                            e.OnClick(SwinGame.MousePosition());
+                            b.OnClick(SwinGame.MousePosition());
+                            fCurrentTable = b;
                             break;
                         }
                     }
                 }
+
             } while (!(SwinGame.MouseClicked(MouseButton.LeftButton)) && !SwinGame.WindowCloseRequested());
         }
 
@@ -78,10 +88,12 @@ namespace MyGame
         {
             SwinGame.ClearScreen(Color.White);
 
-            foreach (UIElement e in fUIElements)
+            foreach (Button b in fTabButtons)
             {
-                if (e != null)
-                    e.Draw();
+                if (fCurrentTable == b)
+                    b.DrawSelected();
+                else
+                    b.Draw();
             }
 
             if (fTable == null)
@@ -89,25 +101,27 @@ namespace MyGame
                 SwinGame.FillRectangle(Color.LightBlue, 10, 10, GameMain.TABLE_WIDTH, GameMain.TABLE_HEIGHT);
                 SwinGame.DrawRectangle(Color.Black, 10, 10, GameMain.TABLE_WIDTH, GameMain.TABLE_HEIGHT);
             }
+            else
+                fTable.Draw();
 
             SwinGame.RefreshScreen();
         }
 
         public static void PopulateElements()
         {
-            fUIElements = new List<UIElement>();
+            fTabButtons = new List<Button>();
             fTable = null;
 
-            fUIElements.Add(new Button(9 + TABLE_WIDTH, 10, 150, 40, Color.DodgerBlue, "Generate List", new DisplayCurrentStockTable()));
-            fUIElements.Add(new Button(9 + TABLE_WIDTH, 49, 150, 40, Color.DodgerBlue, "Display Sales", new DisplaySaleTable()));
-            fUIElements.Add(new Button(9 + TABLE_WIDTH, 88, 150, 40, Color.DodgerBlue, "Display Orders", new DisplayOrdersTable()));
-            fUIElements.Add(new Button(9 + TABLE_WIDTH, 127, 150, 40, Color.DodgerBlue, "Display Items", new DisplayItemTable()));
-            fUIElements.Add(new Button(9 + TABLE_WIDTH, 166, 150, 40, Color.DodgerBlue, "Empty", new Empty()));
-            fUIElements.Add(new Button(9 + TABLE_WIDTH, 205, 150, 40, Color.DodgerBlue, "Empty", new Empty()));
-            fUIElements.Add(new Button(9 + TABLE_WIDTH, 244, 150, 40, Color.DodgerBlue, "Empty", new Empty()));
-            fUIElements.Add(new Button(9 + TABLE_WIDTH, 283, 150, 40, Color.DodgerBlue, "Empty", new Empty()));
-            fUIElements.Add(new Button(9 + TABLE_WIDTH, 322, 150, 40, Color.DodgerBlue, "Empty", new Empty()));
-            fUIElements.Add(new Button(9 + TABLE_WIDTH, 361, 150, 40, Color.DodgerBlue, "Empty", new Empty()));
+            fTabButtons.Add(new Button(9 + TABLE_WIDTH, 10, 150, 40, Color.DodgerBlue, "Generate List", new DisplayCurrentStockTable()));
+            fTabButtons.Add(new Button(9 + TABLE_WIDTH, 49, 150, 40, Color.DodgerBlue, "Display Sales", new DisplaySaleTable()));
+            fTabButtons.Add(new Button(9 + TABLE_WIDTH, 88, 150, 40, Color.DodgerBlue, "Display Orders", new DisplayOrdersTable()));
+            fTabButtons.Add(new Button(9 + TABLE_WIDTH, 127, 150, 40, Color.DodgerBlue, "Display Items", new DisplayItemTable()));
+            fTabButtons.Add(new Button(9 + TABLE_WIDTH, 166, 150, 40, Color.DodgerBlue, "Empty", new Empty()));
+            fTabButtons.Add(new Button(9 + TABLE_WIDTH, 205, 150, 40, Color.DodgerBlue, "Empty", new Empty()));
+            fTabButtons.Add(new Button(9 + TABLE_WIDTH, 244, 150, 40, Color.DodgerBlue, "Empty", new Empty()));
+            fTabButtons.Add(new Button(9 + TABLE_WIDTH, 283, 150, 40, Color.DodgerBlue, "Empty", new Empty()));
+            fTabButtons.Add(new Button(9 + TABLE_WIDTH, 322, 150, 40, Color.DodgerBlue, "Empty", new Empty()));
+            fTabButtons.Add(new Button(9 + TABLE_WIDTH, 361, 150, 40, Color.DodgerBlue, "Empty", new Empty()));
         }
     }
 }

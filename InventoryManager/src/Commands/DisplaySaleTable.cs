@@ -15,11 +15,9 @@ namespace MyGame
             //GameMain.pTable.pHeader = new string[] { "StockID", "Number Sold", "SaleID" };
             //GameMain.pUIElements.Add(GameMain.pTable);
 
-            GameMain.pUIElements.Remove(GameMain.pTable);
             GameMain.pTable = new Table(10, 10, GameMain.TABLE_WIDTH, GameMain.TABLE_HEIGHT, Color.Black, GameMain.inventoryDB.runDatabaseQuery( new string[] { "StockID", "NumberSold", "SaleID" }, "Sale"));
             GameMain.pTable.pScrollBar.Initialise();
             GameMain.pTable.pHeader = new string[] { "StockID", "Number Sold", "SaleID" };
-            GameMain.pUIElements.Add(GameMain.pTable);
         }
     }
 }
