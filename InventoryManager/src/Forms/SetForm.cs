@@ -50,7 +50,6 @@ namespace MyGame
 
         public void AddButtonClick(object sender, EventArgs args)
         {
-
         }
 
         public void Run()
