@@ -10,6 +10,8 @@ namespace MyGame
         protected string fText;
         protected Command fCommand;
 
+        public string pText { get { return fText; } }
+
         public Button(int aX, int aY, int aWidth, int aHeight, Color aColor, string aText, Command aCmd)
             : base(aX, aY, aWidth, aHeight, aColor)
         {

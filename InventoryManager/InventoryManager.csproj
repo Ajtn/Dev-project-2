@@ -95,6 +95,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="src\Commands\Add.cs" />
     <Compile Include="src\Commands\Command.cs" />
     <Compile Include="src\Commands\DeleteID.cs" />
     <Compile Include="src\Commands\DisplayItemTable.cs" />
@@ -106,6 +107,8 @@
     <Compile Include="src\Commands\ScrollUp.cs" />
     <Compile Include="src\Commands\SetField.cs" />
     <Compile Include="src\DatabaseManager.cs" />
+    <Compile Include="src\Forms\AddForm.cs" />
+    <Compile Include="src\Forms\SetForm.cs" />
     <Compile Include="src\GameMain.cs" />
     <Compile Include="src\UIElements\Button.cs" />
     <Compile Include="src\UIElements\ClickableElement.cs" />
@@ -125,6 +128,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

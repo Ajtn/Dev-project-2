@@ -14,17 +14,18 @@ namespace MyGame
 
         public static DatabaseManager inventoryDB = new DatabaseManager("sql6.freemysqlhosting.net", "sql6114576",
                                                                 "sql6114576", "BzSIN9yCih");
-//private static List<UIElement> fUIElements;
+
         private static Table fTable;
         private static Button fCurrentTable;
         private static List<Button> fTabButtons;
+        private static List<Button> fFunctionButtons;
 
+        public static Button pCurrentTable { get { return fCurrentTable; } }
         public static Table pTable { get { return fTable; } set { fTable = value; } }
-        //public static List<UIElement> pUIElements { get { return fUIElements; } set { fUIElements = value; } }
 
         public static void Main()
         {
-            SwinGame.OpenGraphicsWindow("Pharmacy", 1220, 670);
+            SwinGame.OpenGraphicsWindow("Peoples Health Pharmacy", 1220, 670);
             SwinGame.LoadFontNamed("courier", "cour.ttf", 14);
 
             inventoryDB.OpenDBConnection();
@@ -79,6 +80,12 @@ namespace MyGame
                             break;
                         }
                     }
+
+                    foreach (Button b in fFunctionButtons)
+                    {
+                        if (b != null && SwinGame.PointInRect(SwinGame.MousePosition(), b.pClickbox))
+                            b.OnClick(SwinGame.MousePosition());
+                    }
                 }
 
             } while (!(SwinGame.MouseClicked(MouseButton.LeftButton)) && !SwinGame.WindowCloseRequested());
@@ -96,6 +103,9 @@ namespace MyGame
                     b.Draw();
             }
 
+            foreach (Button b in fFunctionButtons)
+                b.Draw();
+
             if (fTable == null)
             {
                 SwinGame.FillRectangle(Color.LightBlue, 10, 10, GameMain.TABLE_WIDTH, GameMain.TABLE_HEIGHT);
@@ -110,6 +120,7 @@ namespace MyGame
         public static void PopulateElements()
         {
             fTabButtons = new List<Button>();
+            fFunctionButtons = new List<Button>();
             fTable = null;
 
             fTabButtons.Add(new Button(9 + TABLE_WIDTH, 10, 150, 40, Color.DodgerBlue, "Generate List", new DisplayCurrentStockTable()));
@@ -121,7 +132,8 @@ namespace MyGame
             fTabButtons.Add(new Button(9 + TABLE_WIDTH, 244, 150, 40, Color.DodgerBlue, "Empty", new Empty()));
             fTabButtons.Add(new Button(9 + TABLE_WIDTH, 283, 150, 40, Color.DodgerBlue, "Empty", new Empty()));
             fTabButtons.Add(new Button(9 + TABLE_WIDTH, 322, 150, 40, Color.DodgerBlue, "Empty", new Empty()));
-            fTabButtons.Add(new Button(9 + TABLE_WIDTH, 361, 150, 40, Color.DodgerBlue, "Empty", new Empty()));
+
+            fFunctionButtons.Add(new Button(20 + TABLE_WIDTH, 373, 90, 40, Color.Aqua, "Add", new Add()));
         }
     }
 }
