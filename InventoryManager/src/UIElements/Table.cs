@@ -16,6 +16,7 @@ namespace MyGame
 
         protected string[,] fData;
         protected string[] fHeader;
+        protected string fTableName;
         protected int fCellWidth;
         protected int fBuffer = 0;
         protected int fTotalDisplayed;
@@ -29,8 +30,9 @@ namespace MyGame
         public string[,] pData { get { return fData; } }
         public int pBuffer { get { return fBuffer; } set { fBuffer = value; } }
         public string[] pHeader { get { return fHeader; } set { fHeader = value; } }
+        public string pTableName { get { return fTableName; } set { fTableName = value; } }
 
-        public Table(int aX, int aY, int aWidth, int aHeight, Color aColor, string[,] aData)
+        public Table(int aX, int aY, int aWidth, int aHeight, Color aColor, string[,] aData, string aTableName)
             : base(aX, aY, aWidth, aHeight, aColor)
         {
             if (aData.GetLength(0) < 19)
@@ -38,6 +40,7 @@ namespace MyGame
             else
                 fTotalDisplayed = 19;
 
+            fTableName = aTableName;
             fData = aData;
             fListWidth = aWidth - SCROLL_WIDTH - SET_WIDTH - DELETE_WIDTH;
             fCellWidth = (fListWidth - ID_WIDTH) / (aData.GetLength(1) - 1);
