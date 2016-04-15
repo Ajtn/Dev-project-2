@@ -68,5 +68,16 @@ namespace MyGame
             MySqlCommand myCommand = new MySqlCommand(myQuery, myConnection);
             myCommand.ExecuteNonQuery();
         }
+
+        //public void addDatabaseRow(string tableName)
+        //{
+        //    string myQuery = "INSERT INTO " + tableName + "VALUES(";
+
+        //    for (int i = 0; i < GameMain.pTable.pHeader.Length)
+        //    {
+
+        //    }
+        //}
+
     }
 }

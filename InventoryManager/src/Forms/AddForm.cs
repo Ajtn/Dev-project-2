@@ -47,6 +47,8 @@ namespace MyGame
             fButton.Top = 200;
             fButton.Click += AddButtonClick;
             fForm.Controls.Add(fButton);
+
+           
         }
 
         public void AddButtonClick(object sender, EventArgs args)
