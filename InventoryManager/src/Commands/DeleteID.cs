@@ -20,6 +20,7 @@ namespace MyGame
                 lSelectedID = GameMain.pTable.GetID(x, y);
                 GameMain.inventoryDB.deleteDatabaseRow(lSelectedID,  GameMain.pTable.pTableName);
                 MessageBox.Show("ID: " + lSelectedID + " successfully deleted.", "Success!", MessageBoxButtons.OK);
+                GameMain.pCurrentTable.OnClick(SwinGame.MousePosition());
             }
         }
 
