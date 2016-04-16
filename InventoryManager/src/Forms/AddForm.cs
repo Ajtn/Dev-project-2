@@ -66,6 +66,8 @@ namespace MyGame
             }
 
             GameMain.inventoryDB.addDatabaseRow(dbArguments, GameMain.pTable.pTableName);
+            fForm.Close();
+
         }
 
         public void Run()
