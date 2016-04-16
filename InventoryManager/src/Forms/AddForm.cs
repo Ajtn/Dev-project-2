@@ -47,10 +47,26 @@ namespace MyGame
             fButton.Top = 200;
             fButton.Click += AddButtonClick;
             fForm.Controls.Add(fButton);
+            
+           
         }
 
         public void AddButtonClick(object sender, EventArgs args)
         {
+            string[] dbArguments = new string[fTextBoxes.Length ];
+            for (int i = 0; i < fTextBoxes.Length; i++)
+            {
+                if (fTextBoxes[i] == null)
+                {
+                    dbArguments[i] = null;
+                }
+                else dbArguments[i] = fTextBoxes[i].Text;
+                
+                
+            }
+
+            GameMain.inventoryDB.addDatabaseRow(dbArguments, GameMain.pTable.pTableName);
+            fForm.Close();
 
         }
 

@@ -68,5 +68,37 @@ namespace MyGame
             MySqlCommand myCommand = new MySqlCommand(myQuery, myConnection);
             myCommand.ExecuteNonQuery();
         }
+
+        public void addDatabaseRow(string[] myArguments, string tableName)
+        {
+            string myQuery = "INSERT INTO `" + tableName + "`(";
+
+            for (int j = 0; j < GameMain.pTable.pHeader.Length; j++ )
+            {
+                if (myArguments[j] != null)
+                {
+                    myQuery += "`" + GameMain.pTable.pHeader[j].Replace(" ", string.Empty) + "`";
+
+                    if (j < GameMain.pTable.pHeader.Length - 1) myQuery += ", ";
+                }
+            }
+
+            myQuery += ") VALUES (";
+
+            for (int i = 0; i < GameMain.pTable.pHeader.Length; i++ )
+            {
+                if (myArguments[i] != null)
+                {
+                    myQuery += "'" + myArguments[i] + "'";
+                }
+                if (i < GameMain.pTable.pHeader.Length - 1 && myArguments[i] != null) myQuery += ",";
+
+                
+            }
+            myQuery += ")";
+            MySqlCommand myCommand = new MySqlCommand(myQuery, myConnection);
+            myCommand.ExecuteNonQuery(); //INSERT INTO `Sale`(`NumberSold`, `SaleID`) VALUES ('22','99')
+        }
+        
     }
 }

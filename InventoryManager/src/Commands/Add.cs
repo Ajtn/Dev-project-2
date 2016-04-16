@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using SwinGameSDK;
 
 namespace MyGame
 {
@@ -16,6 +17,7 @@ namespace MyGame
             {
                 AddForm lForm = new AddForm();
                 lForm.Run();
+                GameMain.pCurrentTable.OnClick(SwinGame.MousePosition());
             }
         }
     }
