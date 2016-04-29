@@ -88,15 +88,26 @@ namespace MyGame
             {
                 myQuery += ColumnsTableOne[i];
 
-                if (i != (ColumnsTableOne.Length - 1))
+                
+             
+                    myQuery += ", ";
+         
+            }
+
+            for (int i = 0; i < ColumnsTableTwo.Length; i++)
+            {
+                myQuery += ColumnsTableTwo[i];
+
+                if (i != (ColumnsTableTwo.Length - 1))
                 {
                     myQuery += ", ";
                 }
                 else myQuery += " ";
             }
 
-            myQuery += "FROM " + tableOne + " INNER JOIN" + tableTwo + " ON" + "t1." + ColumnToJoin + "t2." + ColumnToJoin;
-            string myQuery2 = "SELECT COUNT(*) " + myQuery; //the query string responsible for requesting the number of rows
+
+            myQuery += "FROM " + tableOne + " INNER JOIN " + tableTwo + " ON " + "t1." + ColumnToJoin + "=t2." + ColumnToJoin;
+            string myQuery2 = "SELECT COUNT(*) " + "FROM " + tableOne + " INNER JOIN " + tableTwo + " ON " + "t1." + ColumnToJoin + "=t2." + ColumnToJoin;; //the query string responsible for requesting the number of rows
 
 
             //Create and initialise command objects
@@ -106,8 +117,19 @@ namespace MyGame
             int rows = Convert.ToInt32(myCommand2.ExecuteScalar()); //Runs the second command, returning a long converted to an int
             myReader = myCommand.ExecuteReader(); //initialises the reader object
 
+            for (int i = 0; i < ColumnsTableOne.Length; i++)
+            {
+                ColumnsTableOne[i] = ColumnsTableOne[i].Remove(0, 3);
+            }
+
+            for (int i = 0; i < ColumnsTableTwo.Length; i++)
+            {
+                ColumnsTableTwo[i] = ColumnsTableTwo[i].Remove(0, 3);
+            }
+
             data = new string[rows, ColumnsTableOne.Length + ColumnsTableTwo.Length]; //Set a new 2d array with the amount of rows and amount of columns
 
+            int temp = 0;
             //Loop through each element in our data array, reading in the appropriate data from the database
             for (int Y = 0; Y < rows; Y++)
             {
@@ -115,10 +137,13 @@ namespace MyGame
                 for (int i = 0; i < ColumnsTableOne.Length; i++)
                 {
                     data[Y, i] = myReader.GetString(ColumnsTableOne[i]);
+                    temp = i;
+
                 }
+                temp++;
                 for (int i = 0; i < ColumnsTableTwo.Length; i++)
                 {
-                    data[Y, i] = myReader.GetString(ColumnsTableTwo[i]);
+                    data[Y, temp] = myReader.GetString(ColumnsTableTwo[i]);
                 }
 
             }
