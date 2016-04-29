@@ -62,6 +62,71 @@ namespace MyGame
             return data;
         }
 
+        public virtual string[,] runDatabaseQuery(string[] dbHeaders, string tableOne, string tableTwo, string[] ColumnsTableOne, string[] ColumnsTableTwo, string ColumnToJoin) 
+        {
+            MySqlDataReader myReader;
+            string[,] data;
+
+            for (int i = 0; i < ColumnsTableOne.Length; i++)
+            {
+                 ColumnsTableOne[i] = ColumnsTableOne[i].Insert(0, "t1.");
+            }
+            
+            for (int i = 0; i < ColumnsTableTwo.Length; i++)
+            {
+                ColumnsTableTwo[i] = ColumnsTableTwo[i].Insert(0, "t2.");
+            }
+
+            tableOne += " t1";
+            tableTwo += " t2";
+
+
+
+            string myQuery = "SELECT ";
+
+            for (int i = 0; i < ColumnsTableOne.Length; i++)
+            {
+                myQuery += ColumnsTableOne[i];
+
+                if (i != (ColumnsTableOne.Length - 1))
+                {
+                    myQuery += ", ";
+                }
+                else myQuery += " ";
+            }
+
+            myQuery += "FROM " + tableOne + " INNER JOIN" + tableTwo + " ON" + "t1." + ColumnToJoin + "t2." + ColumnToJoin;
+            string myQuery2 = "SELECT COUNT(*) " + myQuery; //the query string responsible for requesting the number of rows
+
+
+            //Create and initialise command objects
+            MySqlCommand myCommand2 = new MySqlCommand(myQuery2, myConnection);
+            MySqlCommand myCommand = new MySqlCommand(myQuery, myConnection);
+
+            int rows = Convert.ToInt32(myCommand2.ExecuteScalar()); //Runs the second command, returning a long converted to an int
+            myReader = myCommand.ExecuteReader(); //initialises the reader object
+
+            data = new string[rows, ColumnsTableOne.Length + ColumnsTableTwo.Length]; //Set a new 2d array with the amount of rows and amount of columns
+
+            //Loop through each element in our data array, reading in the appropriate data from the database
+            for (int Y = 0; Y < rows; Y++)
+            {
+                myReader.Read(); //called each iteration of the loop in order to read in new rows
+                for (int i = 0; i < ColumnsTableOne.Length; i++)
+                {
+                    data[Y, i] = myReader.GetString(ColumnsTableOne[i]);
+                }
+                for (int i = 0; i < ColumnsTableTwo.Length; i++)
+                {
+                    data[Y, i] = myReader.GetString(ColumnsTableTwo[i]);
+                }
+
+            }
+
+            myReader.Close(); //close the data reader
+            return data;
+        }
+
         public void deleteDatabaseRow(int id, string tableName )
         {
             string myQuery = "DELETE FROM " + tableName + " WHERE " + GameMain.pTable.pHeader[0].Replace(" ", string.Empty) + " =" + id;
