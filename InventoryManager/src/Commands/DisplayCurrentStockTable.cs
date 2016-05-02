@@ -11,7 +11,7 @@ namespace MyGame
         public override void Do(int x, int y)
         {
             //GameMain.pTable = new Table(10, 10, GameMain.TABLE_WIDTH, GameMain.TABLE_HEIGHT, Color.Black, GameMain.inventoryDB.runDatabaseQuery(new string[] { "StockID", "ProductName", "NumberInStock" }, "CurrentStock"), "CurrentStock");
-            GameMain.pTable = new Table(10, 10, GameMain.TABLE_WIDTH, GameMain.TABLE_HEIGHT, Color.Black, GameMain.inventoryDB.runDatabaseQuery(new string[] { "StockID", "ProductName", "NumberInStock" },"AvailableItems", "Item",new string[] {"Quantity"}, new string[] {"Name"}, "ItemID" ), "CurrentStock");
+            GameMain.pTable = new Table(10, 10, GameMain.TABLE_WIDTH, GameMain.TABLE_HEIGHT, Color.Black, GameMain.inventoryDB.runDatabaseQuery("AvailableItems", "Item",new string[] {"Quantity"}, new string[] {"Name"}, "ItemID" ), "CurrentStock");
             GameMain.pTable.pScrollBar.Initialise();
             GameMain.pTable.pHeader = new string[] {"Quantity", "Item Name"};
         }
