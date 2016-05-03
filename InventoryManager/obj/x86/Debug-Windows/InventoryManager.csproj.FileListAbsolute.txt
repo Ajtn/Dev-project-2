@@ -53,4 +53,3 @@ C:\Users\Marcus Crisafi\Desktop\DP2\Dev-project-2\InventoryManager\bin\Debug\Swi
 C:\Users\Marcus Crisafi\Desktop\DP2\Dev-project-2\InventoryManager\obj\x86\Debug-Windows\InventoryManager.csprojResolveAssemblyReference.cache
 C:\Users\Marcus Crisafi\Desktop\DP2\Dev-project-2\InventoryManager\obj\x86\Debug-Windows\MyGame.exe
 C:\Users\Marcus Crisafi\Desktop\DP2\Dev-project-2\InventoryManager\obj\x86\Debug-Windows\MyGame.pdb
-C:\Users\Lionel\Desktop\DP2\Dev-project-2\InventoryManager\obj\x86\Debug-Windows\InventoryManager.csprojResolveAssemblyReference.cache
