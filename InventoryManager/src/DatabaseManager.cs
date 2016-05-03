@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using MySql.Data.MySqlClient;
+using System.Configuration;
 
 namespace MyGame
 {
@@ -12,13 +13,20 @@ namespace MyGame
 
 
         //The default constructor initializes a new MySqlConnection object with a connection string
-        public DatabaseManager(string dbServer, string dbName, string dbUser, string dbPW) 
+        public DatabaseManager() 
         {
-            myConnection = new MySqlConnection(
-                "Server=" + dbServer + ";" +
-                "Database=" + dbName + ";" +
-                "Uid=" + dbUser + ";" +
-                "Password=" + dbPW + ";");
+            Configuration config = ConfigurationManager.OpenExeConfiguration("MyGame.exe");
+
+            ConnectionStringsSection section = config.GetSection("connectionStrings") as ConnectionStringsSection;
+
+            if (!section.SectionInformation.IsProtected)
+            {
+                // Encrypt the section.
+                section.SectionInformation.ProtectSection("DataProtectionConfigurationProvider");
+                config.Save();
+            }
+
+            myConnection = new MySqlConnection(ConfigurationManager.ConnectionStrings["databaseConnectionString"].ToString());
         }
 
         public bool openDBConnection() //Opens a connection on the MySqlConnection object
@@ -30,14 +38,14 @@ namespace MyGame
             return true;
         }
 
-        public string[,] runDatabaseQuery(string[] dbHeaders, string tableName) //Method for handling database ueries
+        public string[,] runDatabaseQuery(string[] dbHeaders, string tableName) //Select all from a table
         {
-            MySqlDataReader myReader; 
+            MySqlDataReader myReader;
             string[,] data;
             List<String> result = new List<String>();
 
             string myQuery = "SELECT * FROM " + tableName; //sets the main query string
-            string myQuery2 = "SELECT COUNT(*) FROM " +tableName; //the query string responsible for requesting the number of rows
+            string myQuery2 = "SELECT COUNT(*) FROM " + tableName; //the query string responsible for requesting the number of rows
 
             //Create and initialise command objects
             MySqlCommand myCommand2 = new MySqlCommand(myQuery2, myConnection);
@@ -48,20 +56,20 @@ namespace MyGame
 
             data = new string[rows, dbHeaders.Length]; //Set a new 2d array with the amount of rows and amount of columns
 
-                //Loop through each element in our data array, reading in the appropriate data from the database
-                for (int Y = 0; Y < rows; Y++ )
+            //Loop through each element in our data array, reading in the appropriate data from the database
+            for (int Y = 0; Y < rows; Y++)
+            {
+                myReader.Read(); //called each iteration of the loop in order to read in new rows
+                for (int i = 0; i < dbHeaders.Length; i++)
                 {
-                    myReader.Read(); //called each iteration of the loop in order to read in new rows
-                    for (int i = 0; i < dbHeaders.Length; i++)
-                    {
-                        data[Y, i] = myReader.GetString(dbHeaders[i]);
-                    }
+                    data[Y, i] = myReader.GetString(dbHeaders[i]);
                 }
+            }
 
             myReader.Close(); //close the data reader
             return data;
         }
-
+        //Select from two tables using an inner join
         public virtual string[,] runDatabaseQuery( string tableOne, string tableTwo, string[] ColumnsTableOne, string[] ColumnsTableTwo, string ColumnToJoin) 
         {
             MySqlDataReader myReader;
@@ -153,6 +161,7 @@ namespace MyGame
             return data;
         }
 
+        //Select from three tables using two inner joins.
         public virtual string[,] runDatabaseQuery(string tableOne, string tableTwo, string tableThree, 
                                                   string[] ColumnsTableOne, string[] ColumnsTableTwo, string[] ColumnsTableThree, 
                                                   string ColumnToJoinA, string ColumnToJoinB)
@@ -271,7 +280,7 @@ namespace MyGame
             myReader.Close(); //close the data reader
             return data;
         }
-
+        
         public void deleteDatabaseRow(int id, string tableName )
         {
             string myQuery = "DELETE FROM " + tableName + " WHERE " + GameMain.pTable.pHeader[0].Replace(" ", string.Empty) + " =" + id;
@@ -308,6 +317,11 @@ namespace MyGame
             myQuery += ")";
             MySqlCommand myCommand = new MySqlCommand(myQuery, myConnection);
             myCommand.ExecuteNonQuery(); //INSERT INTO `Sale`(`NumberSold`, `SaleID`) VALUES ('22','99')
+        }
+
+        public virtual void addDatabaseRow(string[] myArguments, string tableName1, string tableName2)
+        {
+ 
         }
         
     }

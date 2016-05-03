@@ -12,8 +12,7 @@ namespace MyGame
         public const int TABLE_HEIGHT = 500;
         public const int TABLE_WIDTH = 1050;
 
-        public static DatabaseManager inventoryDB = new DatabaseManager("sql6.freemysqlhosting.net", "sql6114576",
-                                                                "sql6114576", "BzSIN9yCih");
+        public static DatabaseManager inventoryDB = new DatabaseManager();
 
         private static Table fTable;
         private static Button fCurrentTable;

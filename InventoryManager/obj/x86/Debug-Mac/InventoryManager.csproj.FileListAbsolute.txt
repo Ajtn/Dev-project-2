@@ -53,3 +53,4 @@ C:\Users\Marcus Crisafi\Desktop\DP2\Dev-project-2\InventoryManager\bin\Debug\MyG
 C:\Users\Marcus Crisafi\Desktop\DP2\Dev-project-2\InventoryManager\bin\Debug\MySql.Data.dll
 C:\Users\Marcus Crisafi\Desktop\DP2\Dev-project-2\InventoryManager\bin\Debug\SwinGame.dll
 C:\Users\Marcus Crisafi\Desktop\DP2\Dev-project-2\InventoryManager\obj\x86\Debug-Mac\InventoryManager.csprojResolveAssemblyReference.cache
+C:\Users\Lionel\Desktop\DP2\Dev-project-2\InventoryManager\obj\x86\Debug-Mac\InventoryManager.csprojResolveAssemblyReference.cache
