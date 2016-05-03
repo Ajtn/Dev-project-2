@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using MySql.Data.MySqlClient;
 using SwinGameSDK;
+using System.Windows.Forms;
 
 namespace MyGame
 {
@@ -26,9 +27,12 @@ namespace MyGame
 
         public static void Main()
         {
+            Login_Form start = new Login_Form();
+            Application.Run(start);
+
             SwinGame.OpenGraphicsWindow("Peoples Health Pharmacy", 1220, 670);
-            SwinGame.LoadFontNamed("courier", "cour.ttf", 14);
             SwinGame.ShowSwinGameSplashScreen();
+            SwinGame.LoadFontNamed("courier", "cour.ttf", 14);
 
             inventoryDB.openDBConnection();
             PopulateElements();
@@ -128,7 +132,7 @@ namespace MyGame
             fTabButtons.Add(new Button(9 + TABLE_WIDTH, 10, 150, 40, Color.DodgerBlue, "Current Stock", new DisplayCurrentStockTable()));
             fTabButtons.Add(new Button(9 + TABLE_WIDTH, 49, 150, 40, Color.DodgerBlue, "Entire Catalogue", new DisplayItemTable()));
             fTabButtons.Add(new Button(9 + TABLE_WIDTH, 88, 150, 40, Color.DodgerBlue, "Stock Orders", new DisplayOrdersTable()));
-            fTabButtons.Add(new Button(9 + TABLE_WIDTH, 127, 150, 40, Color.DodgerBlue, "Transactions", new DisplayTransactionsTable()));         
+            fTabButtons.Add(new Button(9 + TABLE_WIDTH, 127, 150, 40, Color.DodgerBlue, "Transactions", new DisplayTransactionsTable()));
             fTabButtons.Add(new Button(9 + TABLE_WIDTH, 166, 150, 40, Color.DodgerBlue, "Empty", new Empty()));
             fTabButtons.Add(new Button(9 + TABLE_WIDTH, 205, 150, 40, Color.DodgerBlue, "Empty", new Empty()));
             fTabButtons.Add(new Button(9 + TABLE_WIDTH, 244, 150, 40, Color.DodgerBlue, "Empty", new Empty()));
@@ -137,5 +141,26 @@ namespace MyGame
 
             fFunctionButtons.Add(new Button(20 + TABLE_WIDTH, 373, 90, 40, Color.Aqua, "Add", new Add()));
         }
+
+
+        public static void Login(string aUsername, string aPassword)
+        {
+
+            Login tryLogin = new Login();
+            tryLogin.Try(aUsername,aPassword);
+
+            if (tryLogin.Authenticated)
+            {
+                MessageBox.Show("Login Successful.\nWelcome to People's Health Pharmacy");
+                Application.Exit();
+            }
+            else
+            {
+                MessageBox.Show("Login Failed.\nPlease try again");
+                
+            }
+        }
     }
 }
+
+   

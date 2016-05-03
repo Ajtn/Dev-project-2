@@ -95,6 +95,12 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Login_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login_Form.Designer.cs">
+      <DependentUpon>Login_Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\Commands\Add.cs" />
     <Compile Include="src\Commands\Command.cs" />
     <Compile Include="src\Commands\DeleteID.cs" />
@@ -112,6 +118,7 @@
     <Compile Include="src\GameMain.cs" />
     <Compile Include="src\UIElements\Button.cs" />
     <Compile Include="src\UIElements\ClickableElement.cs" />
+    <Compile Include="src\UIElements\Login.cs" />
     <Compile Include="src\UIElements\Scrollbar.cs" />
     <Compile Include="src\UIElements\Table.cs" />
     <Compile Include="src\UIElements\UIElement.cs" />
@@ -214,6 +221,11 @@
     <WinLibraryFiles Include="lib\win\smpeg.dll" />
     <WinLibraryFiles Include="lib\win\swingame.rc" />
     <WinLibraryFiles Include="lib\win\zlib1.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Login_Form.resx">
+      <DependentUpon>Login_Form.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Target Name="CopyFiles">
     <Copy SourceFiles="@(MacLibraryFiles)" DestinationFolder="$(OutDir)" />

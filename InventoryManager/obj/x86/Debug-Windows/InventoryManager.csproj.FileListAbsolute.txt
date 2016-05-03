@@ -54,3 +54,33 @@ C:\Users\Marcus Crisafi\Desktop\DP2\Dev-project-2\InventoryManager\obj\x86\Debug
 C:\Users\Marcus Crisafi\Desktop\DP2\Dev-project-2\InventoryManager\obj\x86\Debug-Windows\MyGame.exe
 C:\Users\Marcus Crisafi\Desktop\DP2\Dev-project-2\InventoryManager\obj\x86\Debug-Windows\MyGame.pdb
 C:\Users\Lionel\Desktop\DP2\Dev-project-2\InventoryManager\obj\x86\Debug-Windows\InventoryManager.csprojResolveAssemblyReference.cache
+C:\Users\alhut_000.MARKSGAMEPC-PC.000\Dev-project-2\InventoryManager\bin\Debug\Resources\animations\startup.txt
+C:\Users\alhut_000.MARKSGAMEPC-PC.000\Dev-project-2\InventoryManager\bin\Debug\Resources\bundles\FileDialog.txt
+C:\Users\alhut_000.MARKSGAMEPC-PC.000\Dev-project-2\InventoryManager\bin\Debug\Resources\bundles\splash.txt
+C:\Users\alhut_000.MARKSGAMEPC-PC.000\Dev-project-2\InventoryManager\bin\Debug\Resources\fonts\arial.ttf
+C:\Users\alhut_000.MARKSGAMEPC-PC.000\Dev-project-2\InventoryManager\bin\Debug\Resources\fonts\cour.ttf
+C:\Users\alhut_000.MARKSGAMEPC-PC.000\Dev-project-2\InventoryManager\bin\Debug\Resources\fonts\maven_pro_regular.ttf
+C:\Users\alhut_000.MARKSGAMEPC-PC.000\Dev-project-2\InventoryManager\bin\Debug\Resources\images\fdFile.png
+C:\Users\alhut_000.MARKSGAMEPC-PC.000\Dev-project-2\InventoryManager\bin\Debug\Resources\images\fdFolder.png
+C:\Users\alhut_000.MARKSGAMEPC-PC.000\Dev-project-2\InventoryManager\bin\Debug\Resources\images\FileDialog_Active.png
+C:\Users\alhut_000.MARKSGAMEPC-PC.000\Dev-project-2\InventoryManager\bin\Debug\Resources\images\FileDialog_Background.png
+C:\Users\alhut_000.MARKSGAMEPC-PC.000\Dev-project-2\InventoryManager\bin\Debug\Resources\images\FileDialog_Inactive.png
+C:\Users\alhut_000.MARKSGAMEPC-PC.000\Dev-project-2\InventoryManager\bin\Debug\Resources\images\FileDialog_Scroll.png
+C:\Users\alhut_000.MARKSGAMEPC-PC.000\Dev-project-2\InventoryManager\bin\Debug\Resources\images\FileDialog_ScrollSmall.png
+C:\Users\alhut_000.MARKSGAMEPC-PC.000\Dev-project-2\InventoryManager\bin\Debug\Resources\images\Swinburne.jpg
+C:\Users\alhut_000.MARKSGAMEPC-PC.000\Dev-project-2\InventoryManager\bin\Debug\Resources\images\SwinGameAni.png
+C:\Users\alhut_000.MARKSGAMEPC-PC.000\Dev-project-2\InventoryManager\bin\Debug\Resources\panels\FileDialog.txt
+C:\Users\alhut_000.MARKSGAMEPC-PC.000\Dev-project-2\InventoryManager\bin\Debug\Resources\sounds\error.wav
+C:\Users\alhut_000.MARKSGAMEPC-PC.000\Dev-project-2\InventoryManager\bin\Debug\Resources\sounds\SwinGameStart.wav
+C:\Users\alhut_000.MARKSGAMEPC-PC.000\Dev-project-2\InventoryManager\bin\Debug\Resources\SwinGame.icns
+C:\Users\alhut_000.MARKSGAMEPC-PC.000\Dev-project-2\InventoryManager\bin\Debug\Resources\SwinGame.ico
+C:\Users\alhut_000.MARKSGAMEPC-PC.000\Dev-project-2\InventoryManager\bin\Debug\MyGame.exe.config
+C:\Users\alhut_000.MARKSGAMEPC-PC.000\Dev-project-2\InventoryManager\bin\Debug\MyGame.exe
+C:\Users\alhut_000.MARKSGAMEPC-PC.000\Dev-project-2\InventoryManager\bin\Debug\MyGame.pdb
+C:\Users\alhut_000.MARKSGAMEPC-PC.000\Dev-project-2\InventoryManager\bin\Debug\MySql.Data.dll
+C:\Users\alhut_000.MARKSGAMEPC-PC.000\Dev-project-2\InventoryManager\bin\Debug\SwinGame.dll
+C:\Users\alhut_000.MARKSGAMEPC-PC.000\Dev-project-2\InventoryManager\obj\x86\Debug-Windows\InventoryManager.csprojResolveAssemblyReference.cache
+C:\Users\alhut_000.MARKSGAMEPC-PC.000\Dev-project-2\InventoryManager\obj\x86\Debug-Windows\MyGame.exe
+C:\Users\alhut_000.MARKSGAMEPC-PC.000\Dev-project-2\InventoryManager\obj\x86\Debug-Windows\MyGame.pdb
+C:\Users\alhut_000.MARKSGAMEPC-PC.000\Dev-project-2\InventoryManager\obj\x86\Debug-Windows\MyGame.Login_Form.resources
+C:\Users\alhut_000.MARKSGAMEPC-PC.000\Dev-project-2\InventoryManager\obj\x86\Debug-Windows\InventoryManager.csproj.GenerateResource.Cache
