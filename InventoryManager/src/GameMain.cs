@@ -28,7 +28,7 @@ namespace MyGame
         {
             SwinGame.OpenGraphicsWindow("Peoples Health Pharmacy", 1220, 670);
             SwinGame.LoadFontNamed("courier", "cour.ttf", 14);
-            SwinGame.ShowSwinGameSplashScreen;
+            SwinGame.ShowSwinGameSplashScreen();
 
             inventoryDB.openDBConnection();
             PopulateElements();
