@@ -86,12 +86,8 @@ namespace MyGame
 
             for (int i = 0; i < ColumnsTableOne.Length; i++)
             {
-                myQuery += ColumnsTableOne[i];
-
-                
-             
-                    myQuery += ", ";
-         
+                myQuery += ColumnsTableOne[i];         
+                myQuery += ", ";
             }
 
             for (int i = 0; i < ColumnsTableTwo.Length; i++)
