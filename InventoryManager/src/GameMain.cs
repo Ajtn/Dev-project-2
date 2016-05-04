@@ -25,7 +25,7 @@ namespace MyGame
 
         public static void Main()
         {
-            SwinGame.OpenGraphicsWindow("Peoples Health Pharmacy", 1220, 670);
+            SwinGame.OpenGraphicsWindow("Peoples Health Pharmacy", 1220, 510);
             SwinGame.LoadFontNamed("courier", "cour.ttf", 14);
 
             inventoryDB.openDBConnection();
@@ -134,6 +134,8 @@ namespace MyGame
             fTabButtons.Add(new Button(9 + TABLE_WIDTH, 322, 150, 40, Color.DodgerBlue, "Empty", new Empty()));
 
             fFunctionButtons.Add(new Button(20 + TABLE_WIDTH, 373, 90, 40, Color.Aqua, "Add", new Add()));
+            fFunctionButtons.Add(new Button(20 + TABLE_WIDTH, 413, 135, 40, Color.Aqua, "Montly Report", new Empty()));
+            fFunctionButtons.Add(new Button(20 + TABLE_WIDTH, 453, 135, 40, Color.Aqua, "Weekly Report", new Empty()));
         }
     }
 }

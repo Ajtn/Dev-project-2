@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using MySql.Data.MySqlClient;
 using System.Configuration;
+using System.Windows.Forms;
 
 namespace MyGame
 {
     public class DatabaseManager
     {
         MySqlConnection myConnection;
-
 
         //The default constructor initializes a new MySqlConnection object with a connection string
         public DatabaseManager() 
@@ -276,6 +276,21 @@ namespace MyGame
                 }
 
             }
+
+            // warn of low stock (THRESHOLD IS 10)
+            string lTemp = "";
+            for (int i = 0; i < data.GetLength(0); i++)
+            {
+                if (Int32.Parse(data[i, 0]) < 10)
+                {
+                    if (lTemp == "")
+                        lTemp += data[i, 1];
+                    else
+                        lTemp += '\n' + data[i, 1];
+                }
+            }
+            if (lTemp != "")
+                MessageBox.Show("The current items are in low stock" + '\n' + lTemp, "LOW STOCK");
 
             myReader.Close(); //close the data reader
             return data;
