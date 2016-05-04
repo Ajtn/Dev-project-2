@@ -15,8 +15,25 @@ namespace MyGame
         {
             if (GameMain.pTable != null)
             {
-                AddForm lForm = new AddForm();
-                lForm.Run();
+                switch (GameMain.pCurrentTable.pText)
+                {
+                    case ("Current Stock"):
+                        AddItemForm lForm = new AddItemForm();
+                        lForm.Run();
+                        break;
+                    case ("Entire Catalogue"):
+                        AddItemForm aForm = new AddItemForm();
+                        aForm.Run();
+                        break;
+                    case ("Stock Orders"):
+                        AddOrderForm fForm = new AddOrderForm();
+                        fForm.Run();
+                        break;
+                    case ("Transactions"):
+                        AddTransactionsForm dForm = new AddTransactionsForm();
+                        dForm.Run();
+                        break;
+                }
                 GameMain.pCurrentTable.OnClick(SwinGame.MousePosition());
             }
         }

@@ -12,8 +12,6 @@ namespace MyGame
         {
             if (GameMain.pTable != null)
             {
-                AddForm lForm = new AddForm();
-                lForm.Run();
             }
         }
     }

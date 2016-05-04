@@ -107,7 +107,9 @@
     <Compile Include="src\Commands\ScrollUp.cs" />
     <Compile Include="src\Commands\SetField.cs" />
     <Compile Include="src\DatabaseManager.cs" />
-    <Compile Include="src\Forms\AddForm.cs" />
+    <Compile Include="src\Forms\AddItemForm.cs" />
+    <Compile Include="src\Forms\AddOrderForm.cs" />
+    <Compile Include="src\Forms\AddTransactionsForm.cs" />
     <Compile Include="src\Forms\SetForm.cs" />
     <Compile Include="src\GameMain.cs" />
     <Compile Include="src\UIElements\Button.cs" />

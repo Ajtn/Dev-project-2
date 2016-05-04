@@ -80,3 +80,4 @@ C:\Users\Marcus Crisafi\Desktop\Clone\Dev-project-2\InventoryManager\bin\Debug\M
 C:\Users\Marcus Crisafi\Desktop\Clone\Dev-project-2\InventoryManager\bin\Debug\SwinGame.dll
 C:\Users\Marcus Crisafi\Desktop\Clone\Dev-project-2\InventoryManager\obj\x86\Debug-Windows\MyGame.exe
 C:\Users\Marcus Crisafi\Desktop\Clone\Dev-project-2\InventoryManager\obj\x86\Debug-Windows\MyGame.pdb
+C:\Users\Marcus Crisafi\Desktop\Clone\Dev-project-2\InventoryManager\obj\x86\Debug-Windows\InventoryManager.csprojResolveAssemblyReference.cache
