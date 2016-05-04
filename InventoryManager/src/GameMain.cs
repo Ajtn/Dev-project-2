@@ -25,25 +25,36 @@ namespace MyGame
         public static Table pTable { get { return fTable; } set { fTable = value; } }
         public static List<Button> pTabButtons { get { return fTabButtons; } }
 
+		public static bool sucess = false;
+
         public static void Main()
-        {
-            Login_Form start = new Login_Form();
-            Application.Run(start);
+		{
+			Login_Form start = new Login_Form ();
+			Application.Run (start);
 
-            SwinGame.OpenGraphicsWindow("Peoples Health Pharmacy", 1220, 670);
-            SwinGame.ShowSwinGameSplashScreen();
-            SwinGame.LoadFontNamed("courier", "cour.ttf", 14);
+			if (sucess)
+			{
 
-            inventoryDB.openDBConnection();
-            PopulateElements();
+				SwinGame.OpenGraphicsWindow ("Peoples Health Pharmacy", 1220, 670);
+				SwinGame.ShowSwinGameSplashScreen ();
+				SwinGame.LoadFontNamed ("courier", "cour.ttf", 14);
 
-            do
-            {
-                Draw();
-                HandleInput();
-            } while (!SwinGame.WindowCloseRequested());
+				inventoryDB.openDBConnection ();
+				PopulateElements ();
 
-        }
+				do
+				{
+					Draw ();
+					HandleInput ();
+				} while (!SwinGame.WindowCloseRequested ());
+			}
+
+			else
+			{
+				MessageBox.Show ("Unable to login. Application now exiting");
+			}
+
+		}
 
         public static void HandleInput()
         {
@@ -151,12 +162,15 @@ namespace MyGame
 
             if (tryLogin.Authenticated)
             {
+				sucess = true;
                 MessageBox.Show("Login Successful.\nWelcome to People's Health Pharmacy");
                 Application.Exit();
+
             }
             else
             {
-                MessageBox.Show("Login Failed.\nPlease try again");
+				MessageBox.Show("Login Failed.\nPlease try again");
+
                 
             }
         }
