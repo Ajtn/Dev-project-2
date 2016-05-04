@@ -31,6 +31,7 @@ namespace MyGame
 		{
 			Login_Form start = new Login_Form ();
 			Application.Run (start);
+         
 
 			if (sucess)
 			{
