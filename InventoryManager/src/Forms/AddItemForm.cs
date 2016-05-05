@@ -80,17 +80,39 @@ namespace MyGame
 
         public void AddButtonClick(object sender, EventArgs args)
         {
-            string[] dbArguments = new string[fTextBoxes.Length ];
-            for (int i = 0; i < fTextBoxes.Length; i++)
+            string[] itemArguments = new string[3];
+            string[] availableitemsArguments = new string[2];
+
+            int temp = 0;
+
+            for (int i = 0; i < 3; i++)
             {
                 if (fTextBoxes[i] == null)
                 {
-                    dbArguments[i] = null;
+                    itemArguments[i] = null;
                 }
-                else dbArguments[i] = fTextBoxes[i].Text;               
+                else itemArguments[i] = fTextBoxes[i].Text;
+
+                temp = i;
+            }
+            temp++;
+            for (int i = 0; i < 1; i++)
+            {
+                if (fTextBoxes[temp] == null)
+                {
+                    availableitemsArguments[i] = null;
+                }
+                else availableitemsArguments[i] = fTextBoxes[temp].Text;
             }
 
-            GameMain.inventoryDB.addDatabaseRow(dbArguments, GameMain.pTable.pTableName);
+           
+
+            GameMain.inventoryDB.addDatabaseRow(itemArguments, new string[] {"Name", "SalePrice", "CostPrice"}, "Item");
+
+            availableitemsArguments[1] = GameMain.inventoryDB.findPrimaryKey("Name", fTextBoxes[0].Text, "ItemID", "Item");
+
+            GameMain.inventoryDB.addDatabaseRow(availableitemsArguments, new string[] {"Quantity", "ItemID"  }, "AvailableItems");
+            
             fForm.Close();
         }
 
