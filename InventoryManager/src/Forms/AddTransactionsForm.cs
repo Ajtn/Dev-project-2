@@ -113,7 +113,7 @@ namespace MyGame
                 else dbArguments[i] = fTextBoxes[i].Text;
             }
 
-            GameMain.inventoryDB.addDatabaseRow(dbArguments, GameMain.pTable.pTableName);
+            //GameMain.inventoryDB.addDatabaseRow(dbArguments, GameMain.pTable.pTableName);
             fForm.Close();
         }
 

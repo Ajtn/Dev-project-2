@@ -54,3 +54,6 @@ C:\Users\Marcus Crisafi\Desktop\DP2\Dev-project-2\InventoryManager\bin\Debug\MyS
 C:\Users\Marcus Crisafi\Desktop\DP2\Dev-project-2\InventoryManager\bin\Debug\SwinGame.dll
 C:\Users\Marcus Crisafi\Desktop\DP2\Dev-project-2\InventoryManager\obj\x86\Debug-Mac\InventoryManager.csprojResolveAssemblyReference.cache
 C:\Users\Lionel\Desktop\DP2\Dev-project-2\InventoryManager\obj\x86\Debug-Mac\InventoryManager.csprojResolveAssemblyReference.cache
+C:\Users\Lionel\Desktop\DP2\Dev-project-2\Dev-project-2\InventoryManager\bin\Debug\MyGame.exe.config
+C:\Users\Lionel\Desktop\DP2\Dev-project-2\Dev-project-2\InventoryManager\obj\x86\Debug-Mac\MyGame.exe
+C:\Users\Lionel\Desktop\DP2\Dev-project-2\Dev-project-2\InventoryManager\obj\x86\Debug-Mac\MyGame.pdb

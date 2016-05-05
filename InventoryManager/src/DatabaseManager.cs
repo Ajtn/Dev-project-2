@@ -38,11 +38,30 @@ namespace MyGame
             return true;
         }
 
+        public string findPrimaryKey(string columnToSearch, string valueToFind, string primaryKey, string tableName)
+        {
+            string myQuery = "Select " + primaryKey + " FROM " + tableName;
+
+            myQuery += " WHERE " + columnToSearch + "=" + "'" +valueToFind+"'";
+
+            MySqlDataReader myReader;
+
+            MySqlCommand myCommand = new MySqlCommand(myQuery, myConnection);
+
+            myReader = myCommand.ExecuteReader();
+
+            string data = "";
+            myReader.Read();
+            data = myReader.GetString(primaryKey);
+            myReader.Close();
+
+            return data;
+        }
+
         public string[,] runDatabaseQuery(string[] dbHeaders, string tableName) //Select all from a table
         {
             MySqlDataReader myReader;
             string[,] data;
-            List<String> result = new List<String>();
 
             string myQuery = "SELECT * FROM " + tableName; //sets the main query string
             string myQuery2 = "SELECT COUNT(*) FROM " + tableName; //the query string responsible for requesting the number of rows
@@ -302,29 +321,29 @@ namespace MyGame
             myCommand.ExecuteNonQuery();
         }
 
-        public void addDatabaseRow(string[] myArguments, string tableName)
+        public void addDatabaseRow(string[] myArguments, string[] myColumns, string tableName)
         {
             string myQuery = "INSERT INTO `" + tableName + "`(";
 
-            for (int j = 0; j < GameMain.pTable.pHeader.Length; j++ )
+            for (int j = 0; j < myArguments.Length; j++ )
             {
                 if (myArguments[j] != null)
                 {
-                    myQuery += "`" + GameMain.pTable.pHeader[j].Replace(" ", string.Empty) + "`";
+                    myQuery += "`" + myColumns[j] + "`";
 
-                    if (j < GameMain.pTable.pHeader.Length - 1) myQuery += ", ";
+                    if (j < myArguments.Length - 1) myQuery += ", ";
                 }
             }
 
             myQuery += ") VALUES (";
 
-            for (int i = 0; i < GameMain.pTable.pHeader.Length; i++ )
+            for (int i = 0; i < myArguments.Length; i++ )
             {
                 if (myArguments[i] != null)
                 {
                     myQuery += "'" + myArguments[i] + "'";
                 }
-                if (i < GameMain.pTable.pHeader.Length - 1 && myArguments[i] != null) myQuery += ",";
+                if (i < myArguments.Length - 1) myQuery += ",";
 
                 
             }
