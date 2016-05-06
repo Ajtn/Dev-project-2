@@ -38,7 +38,7 @@ namespace MyGame
             return true;
         }
 
-        public string findPrimaryKey(string columnToSearch, string valueToFind, string primaryKey, string tableName)
+        public virtual string findPrimaryKey(string columnToSearch, string valueToFind, string primaryKey, string tableName)
         {
             string myQuery = "Select " + primaryKey + " FROM " + tableName;
 
@@ -57,6 +57,27 @@ namespace MyGame
 
             return data;
         }
+
+        public string findPrimaryKey(string columnToSearch1, string columnToSearch2, string valueToFind1, string valueToFind2, string primaryKey, string tableName)
+        {
+            string myQuery = "Select " + primaryKey + " FROM " + tableName;
+
+            myQuery += " WHERE " + columnToSearch1 + "=" + "'" + valueToFind1 + "'" + " AND " + columnToSearch2 + "=" + "'" + valueToFind2 + "'";
+
+            MySqlDataReader myReader;
+
+            MySqlCommand myCommand = new MySqlCommand(myQuery, myConnection);
+
+            myReader = myCommand.ExecuteReader();
+
+            string data = "";
+            myReader.Read();
+            data = myReader.GetString(primaryKey);
+            myReader.Close();
+
+            return data;
+        }
+
 
         public string[,] runDatabaseQuery(string[] dbHeaders, string tableName) //Select all from a table
         {
@@ -352,9 +373,38 @@ namespace MyGame
             myCommand.ExecuteNonQuery(); //INSERT INTO `Sale`(`NumberSold`, `SaleID`) VALUES ('22','99')
         }
 
-        public virtual void addDatabaseRow(string[] myArguments, string tableName1, string tableName2)
+        public bool checkRecordExists(string tableName, string columnOne, string columnTwo, string valueOne, string valueTwo)
         {
- 
+            bool result = false;
+            int rows = 0;
+            string myQuery = "";
+
+
+            myQuery += "SELECT COUNT(*) FROM " + tableName + " WHERE " + columnOne + "=" + "'" + valueOne + "'" + " AND " + columnTwo + "=" + "'" + valueTwo + "'";
+            MySqlCommand myCommand = new MySqlCommand(myQuery, myConnection);
+
+
+            rows = Convert.ToInt32(myCommand.ExecuteScalar());
+
+            if (rows == 0) return result;
+            else return true;
+        }
+
+        public virtual bool checkRecordExists(string tableName, string columnOne, string valueOne)
+        {
+            bool result = false;
+            int rows = 0;
+            string myQuery = "";
+
+
+            myQuery += "SELECT COUNT(*) FROM " + tableName + " WHERE " + columnOne + "=" + "'" + valueOne + "'";
+            MySqlCommand myCommand = new MySqlCommand(myQuery, myConnection);
+
+
+            rows = Convert.ToInt32(myCommand.ExecuteScalar());
+
+            if (rows == 0) return result;
+            else return true;
         }
         
     }
