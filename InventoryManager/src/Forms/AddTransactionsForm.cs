@@ -26,7 +26,7 @@ namespace MyGame
             fForm.Controls.Add(fTextBoxes[0]);
 
             fLabels[0] = new Label();
-            fLabels[0].Text = "Name";
+            fLabels[0].Text = "Quantity";
             fLabels[0].Left = 20;
             fLabels[0].Top = 60;
             fForm.Controls.Add(fLabels[0]);
@@ -37,7 +37,7 @@ namespace MyGame
             fForm.Controls.Add(fTextBoxes[1]);
 
             fLabels[1] = new Label();
-            fLabels[1].Text = "Sale Price";
+            fLabels[1].Text = "Date";
             fLabels[1].Left = 20;
             fLabels[1].Top = 90;
             fForm.Controls.Add(fLabels[1]);
@@ -48,43 +48,10 @@ namespace MyGame
             fForm.Controls.Add(fTextBoxes[2]);
 
             fLabels[2] = new Label();
-            fLabels[2].Text = "Cost Price";
+            fLabels[2].Text = "Item Name";
             fLabels[2].Left = 20;
             fLabels[2].Top = 120;
             fForm.Controls.Add(fLabels[2]);
-
-            fTextBoxes[3] = new TextBox();
-            fTextBoxes[3].Left = 120;
-            fTextBoxes[3].Top = 150;
-            fForm.Controls.Add(fTextBoxes[3]);
-
-            fLabels[3] = new Label();
-            fLabels[3].Text = "Stock Quantity";
-            fLabels[3].Left = 20;
-            fLabels[3].Top = 150;
-            fForm.Controls.Add(fLabels[3]);
-
-            fTextBoxes[4] = new TextBox();
-            fTextBoxes[4].Left = 120;
-            fTextBoxes[4].Top = 180;
-            fForm.Controls.Add(fTextBoxes[4]);
-
-            fLabels[4] = new Label();
-            fLabels[4].Text = "Date";
-            fLabels[4].Left = 20;
-            fLabels[4].Top = 180;
-            fForm.Controls.Add(fLabels[4]);
-
-            fTextBoxes[5] = new TextBox();
-            fTextBoxes[5].Left = 120;
-            fTextBoxes[5].Top = 210;
-            fForm.Controls.Add(fTextBoxes[5]);
-
-            fLabels[5] = new Label();
-            fLabels[5].Text = "Transaction Qty";
-            fLabels[5].Left = 20;
-            fLabels[5].Top = 210;
-            fForm.Controls.Add(fLabels[5]);
 
             fHeader = new Label();
             fHeader.Text = GameMain.pCurrentTable.pText;
@@ -95,7 +62,7 @@ namespace MyGame
             fButton = new System.Windows.Forms.Button();
             fButton.Text = "Add";
             fButton.Left = 150;
-            fButton.Top = 270;
+            fButton.Top = 200;
             fButton.Click += AddButtonClick;
             fForm.Controls.Add(fButton);
 
@@ -103,14 +70,28 @@ namespace MyGame
 
         public void AddButtonClick(object sender, EventArgs args)
         {
-            string[] dbArguments = new string[fTextBoxes.Length];
-            for (int i = 0; i < fTextBoxes.Length; i++)
+            string[] transactionItemsArguments = new string[3];
+            string[] transactionArguments = new string[1];
+            string[] itemArguments = new string[1];
+            string itemID;
+
+            transactionItemsArguments[0] = fTextBoxes[0].Text;
+            transactionArguments[0] = fTextBoxes[1].Text;
+            itemArguments[0] = fTextBoxes[2].Text;
+
+            
+
+            if (GameMain.inventoryDB.checkRecordExists("Item", "Name", itemArguments[0]))
             {
-                if (fTextBoxes[i] == null)
-                {
-                    dbArguments[i] = null;
-                }
-                else dbArguments[i] = fTextBoxes[i].Text;
+                if (!GameMain.inventoryDB.checkRecordExists("Transaction","TransID", transactionArguments[0]))
+                    GameMain.inventoryDB.addDatabaseRow(transactionArguments, new string[] { "Date" }, "Transaction");
+
+                transactionItemsArguments[2] = GameMain.inventoryDB.findPrimaryKey("Name", itemArguments[0], "ItemID", "Item");
+
+                
+                transactionItemsArguments[1] = GameMain.inventoryDB.findPrimaryKey("Date", transactionArguments[0],"TransID","Transaction");
+
+                GameMain.inventoryDB.addDatabaseRow(transactionItemsArguments, new string[] { "Quantity", "TransID", "ItemID" }, "TransactionItems");
             }
 
             //GameMain.inventoryDB.addDatabaseRow(dbArguments, GameMain.pTable.pTableName);
