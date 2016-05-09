@@ -15,6 +15,7 @@ namespace MyGame
 
         public Login()
         {
+            //authenticated set to false by default for error handling
             _authenticated = false;
         }
 
@@ -32,8 +33,11 @@ namespace MyGame
         {
             _username = st1;
             _password = st2;
+
+            //match username and password to constant
             if (_username == USERNAME && _password == PASSWORD)
             {
+                //if match found, return true
                 _authenticated = true;
 
             }

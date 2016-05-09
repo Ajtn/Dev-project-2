@@ -50,11 +50,6 @@ namespace MyGame
 				} while (!SwinGame.WindowCloseRequested ());
 			}
 
-			else
-			{
-				MessageBox.Show ("Unable to login. Application now exiting");
-			}
-
 		}
 
         public static void HandleInput()
@@ -164,13 +159,13 @@ namespace MyGame
             if (tryLogin.Authenticated)
             {
 				sucess = true;
-                MessageBox.Show("Login Successful.\nWelcome to People's Health Pharmacy");
+                MessageBox.Show("Login Successful.\nWelcome to People's Health Pharmacy","Welcome",MessageBoxButtons.OK,MessageBoxIcon.Asterisk);
                 Application.Exit();
 
             }
             else
             {
-				MessageBox.Show("Login Failed.\nPlease try again");
+				MessageBox.Show("Invalid username and password.\nPlease try again","Error",MessageBoxButtons.OKCancel,MessageBoxIcon.Error);
 
                 
             }
