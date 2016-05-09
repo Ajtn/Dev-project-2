@@ -147,6 +147,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Login_Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Tag = "git";
             this.Text = "lLAMA";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

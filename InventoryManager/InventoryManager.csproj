@@ -93,10 +93,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Login_Form.cs">
+    <Compile Include="src\UIElements\Login_Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login_Form.Designer.cs">
+    <Compile Include="src\UIElements\Login_Form.Designer.cs">
       <DependentUpon>Login_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
@@ -225,7 +225,7 @@
     <WinLibraryFiles Include="lib\win\zlib1.dll" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Login_Form.resx">
+    <EmbeddedResource Include="src\UIElements\Login_Form.resx">
       <DependentUpon>Login_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
