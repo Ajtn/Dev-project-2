@@ -80,11 +80,16 @@ namespace MyGame
 
         public void AddButtonClick(object sender, EventArgs args)
         {
+            //When adding an item, we need to work with two tables.
+            //Firstly an Item must be inserted.
+            //The primary key of the item must be found and a record must be made in the availableItems table
             string[] itemArguments = new string[3];
             string[] availableitemsArguments = new string[2];
 
             int temp = 0;
 
+            //Fill our argument arrays with the user specified values.
+            //NULL check here is not really needed, as the form will not process unless all fields are filled
             for (int i = 0; i < 3; i++)
             {
                 if (fTextBoxes[i] == null)
@@ -106,11 +111,13 @@ namespace MyGame
             }
 
            
-
+            //Add our new item to the Item table.
             GameMain.inventoryDB.addDatabaseRow(itemArguments, new string[] {"Name", "SalePrice", "CostPrice"}, "Item");
 
+            //Find the primary key of our newly created item and store it as an argument to availableItems.
             availableitemsArguments[1] = GameMain.inventoryDB.findPrimaryKey("Name", fTextBoxes[0].Text, "ItemID", "Item");
 
+            //add our new available item to the database.
             GameMain.inventoryDB.addDatabaseRow(availableitemsArguments, new string[] {"Quantity", "ItemID"  }, "AvailableItems");
             
             fForm.Close();

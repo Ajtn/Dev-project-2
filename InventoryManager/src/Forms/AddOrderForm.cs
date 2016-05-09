@@ -81,46 +81,44 @@ namespace MyGame
 
         public void AddButtonClick(object sender, EventArgs args)
         {
-
-            string[] stockOrderArguments = new string[2];
+            //Inserting an order requires that we work with three different tables
+            //Currently, it is a requirement that stock being ordered already exists in the database
+            string[] stockOrderArguments = new string[2]; 
             string[] orderItemsArguments = new string[3];
             string[] itemArguments = new string[1];
 
-            string itemID;
-            string orderID;
+            stockOrderArguments[0] = fTextBoxes[2].Text; //Assign user inputted Date
+            stockOrderArguments[1] = fTextBoxes[3].Text; //Assign user inputted Name
 
-            stockOrderArguments[0] = fTextBoxes[2].Text;
-            stockOrderArguments[1] = fTextBoxes[3].Text;
+            orderItemsArguments[0] = fTextBoxes[1].Text; //Assign user input quantity ordered
 
-            orderItemsArguments[0] = fTextBoxes[1].Text;
+            itemArguments[0] = fTextBoxes[0].Text; //Assign item name
 
-            itemArguments[0] = fTextBoxes[0].Text;
-
-
-
-            if (!GameMain.inventoryDB.checkRecordExists("StockOrder", "Date", "EmployeeName", stockOrderArguments[0], stockOrderArguments[1]))
-            {
-                GameMain.inventoryDB.addDatabaseRow(stockOrderArguments, new string[] { "Date", "EmployeeName" }, "StockOrder");
-                orderID = GameMain.inventoryDB.findPrimaryKey("Date", "EmployeeName", stockOrderArguments[0], stockOrderArguments[1], "OrderID", "StockOrder");
-            }
-            else orderID = GameMain.inventoryDB.findPrimaryKey("Date","EmployeeName", stockOrderArguments[0], stockOrderArguments[1], "OrderID", "StockOrder");
-
+            //Check if we're ordering an item the store already stocks, items ordered by employees must already exist in the database
             if (GameMain.inventoryDB.checkRecordExists("Item", "Name", itemArguments[0]))
             {
-                itemID = "0";
+                //Check if an employee has already put through a stockorder today, if they haven't we need to create a new row in the stockOrder table.
+                if (!GameMain.inventoryDB.checkRecordExists("StockOrder", "Date", "EmployeeName", stockOrderArguments[0], stockOrderArguments[1]))
+                {
+                    GameMain.inventoryDB.addDatabaseRow(stockOrderArguments, new string[] { "Date", "EmployeeName" }, "StockOrder");
+                    //Find the primary key of our newly created stock order
+                    orderItemsArguments[1] = GameMain.inventoryDB.findPrimaryKey("Date", "EmployeeName", stockOrderArguments[0], stockOrderArguments[1], "OrderID", "StockOrder");
+                }
+                else  orderItemsArguments[1] = GameMain.inventoryDB.findPrimaryKey("Date","EmployeeName", stockOrderArguments[0], stockOrderArguments[1], "OrderID", "StockOrder"); //Find the primary key of our existing stock order.
 
-                itemID = GameMain.inventoryDB.findPrimaryKey("Name", itemArguments[0], "ItemID", "Item");
+        
+                    //Find the primary key of our item
+                    orderItemsArguments[2] = GameMain.inventoryDB.findPrimaryKey("Name", itemArguments[0], "ItemID", "Item"); 
 
-                orderItemsArguments[1] = orderID;
-                orderItemsArguments[2] = itemID;
+                    //Insert a new record into orderItems
+                    GameMain.inventoryDB.addDatabaseRow(orderItemsArguments, new string[] { "Quantity", "OrderID", "ItemID" }, "OrderItems");
 
-                GameMain.inventoryDB.addDatabaseRow(orderItemsArguments, new string[] { "Quantity", "OrderID", "ItemID" }, "OrderItems");
-
-                fForm.Close();
-                return;
+                    fForm.Close();
+                    return;
             }
             else
             {
+                MessageBox.Show("You can't order items that are not already stocked!");
                 fForm.Close();
                 return;
             }

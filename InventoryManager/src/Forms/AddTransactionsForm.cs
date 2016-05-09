@@ -70,31 +70,33 @@ namespace MyGame
 
         public void AddButtonClick(object sender, EventArgs args)
         {
+            //Transactions rely on three tables, we create the arrays for each table here
             string[] transactionItemsArguments = new string[3];
             string[] transactionArguments = new string[1];
             string[] itemArguments = new string[1];
-            string itemID;
 
-            transactionItemsArguments[0] = fTextBoxes[0].Text;
-            transactionArguments[0] = fTextBoxes[1].Text;
-            itemArguments[0] = fTextBoxes[2].Text;
+            transactionItemsArguments[0] = fTextBoxes[0].Text; //Assigns user specified Quantity
+            transactionArguments[0] = fTextBoxes[1].Text; //Assigns user specified Date
+            itemArguments[0] = fTextBoxes[2].Text; //Assigns user specified item name
 
-            
 
+            //An item going through as a transaction must already exist in the database
             if (GameMain.inventoryDB.checkRecordExists("Item", "Name", itemArguments[0]))
             {
-                if (!GameMain.inventoryDB.checkRecordExists("Transaction","TransID", transactionArguments[0]))
+                //Check if an entry exists in the Transaction table (the Transaction table only stores dates), if it doesn't create one.
+                if (!GameMain.inventoryDB.checkRecordExists("Transaction", "TransID", transactionArguments[0]))
                     GameMain.inventoryDB.addDatabaseRow(transactionArguments, new string[] { "Date" }, "Transaction");
 
+                //When we insert into the transactionItems table, we need to specify a ItemID and TransID
+                //These statements grab the relevant ItemID and TransID of our newly created transaction (if it didn't already exist) and already existing item
                 transactionItemsArguments[2] = GameMain.inventoryDB.findPrimaryKey("Name", itemArguments[0], "ItemID", "Item");
+                transactionItemsArguments[1] = GameMain.inventoryDB.findPrimaryKey("Date", transactionArguments[0], "TransID", "Transaction");
 
-                
-                transactionItemsArguments[1] = GameMain.inventoryDB.findPrimaryKey("Date", transactionArguments[0],"TransID","Transaction");
-
+                //Finally, add  our row to the TransactionItems table.
                 GameMain.inventoryDB.addDatabaseRow(transactionItemsArguments, new string[] { "Quantity", "TransID", "ItemID" }, "TransactionItems");
             }
+            else MessageBox.Show("Item Does Not Exist!");
 
-            //GameMain.inventoryDB.addDatabaseRow(dbArguments, GameMain.pTable.pTableName);
             fForm.Close();
         }
 
