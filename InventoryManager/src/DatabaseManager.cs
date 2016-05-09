@@ -352,11 +352,11 @@ namespace MyGame
         
         //This method deletes a database row, given a particular ID.
         //This method is incompatible with the new database and must be reworked
-        public void deleteDatabaseRow(int id, string tableName )
+        public void deleteDatabaseRow(string columnName, string valueToFind, string tableName )
         {
-            string myQuery = "DELETE FROM " + tableName + " WHERE " + GameMain.pTable.pHeader[0].Replace(" ", string.Empty) + " =" + id;
+            string myQuery = "DELETE FROM " + tableName + " WHERE " + columnName + " = " + valueToFind;
             MySqlCommand myCommand = new MySqlCommand(myQuery, myConnection);
-            //myCommand.ExecuteNonQuery();
+            myCommand.ExecuteNonQuery();
         }
 
         //This method adds a row to the database.
@@ -444,6 +444,19 @@ namespace MyGame
             else return true;
         }
 
-        
+        public int retrieveAmountOfRows(string tableName, string columnOne, string valueOne)
+        {          
+            int rows = 0;
+            string myQuery = "";
+
+
+            myQuery += "SELECT COUNT(*) FROM " + tableName + " WHERE " + columnOne + "=" + "'" + valueOne + "'";
+            MySqlCommand myCommand = new MySqlCommand(myQuery, myConnection);
+
+
+            rows = Convert.ToInt32(myCommand.ExecuteScalar()); //Store the amount of rows returned from running the query
+
+            return rows;
+        }
     }
 }
