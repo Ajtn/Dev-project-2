@@ -114,3 +114,4 @@ C:\Users\alhut_000.MARKSGAMEPC-PC.000\Dev-project-2\InventoryManager\InventoryMa
 C:\Users\alhut_000.MARKSGAMEPC-PC.000\Dev-project-2\InventoryManager\InventoryManager\obj\x86\Debug-Windows\InventoryManager.csproj.GenerateResource.Cache
 C:\Users\alhut_000.MARKSGAMEPC-PC.000\Dev-project-2\InventoryManager\InventoryManager\obj\x86\Debug-Windows\MyGame.exe
 C:\Users\alhut_000.MARKSGAMEPC-PC.000\Dev-project-2\InventoryManager\InventoryManager\obj\x86\Debug-Windows\MyGame.pdb
+C:\Users\alhut_000.MARKSGAMEPC-PC.000\Dev-project-2\InventoryManager\obj\x86\Debug-Windows\MyGame.Properties.Resources.resources

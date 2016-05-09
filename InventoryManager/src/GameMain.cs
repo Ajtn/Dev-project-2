@@ -32,16 +32,17 @@ namespace MyGame
 			Login_Form start = new Login_Form ();
 			Application.Run (start);
          
-
+            //Swingame file only runs if logged in.
 			if (sucess)
 			{
 
 				SwinGame.OpenGraphicsWindow ("Peoples Health Pharmacy", 1220, 670);
-				SwinGame.ShowSwinGameSplashScreen ();
 				SwinGame.LoadFontNamed ("courier", "cour.ttf", 14);
-
 				inventoryDB.openDBConnection ();
-				PopulateElements ();
+
+                SwinGame.ShowSwinGameSplashScreen();
+
+                PopulateElements ();
 
 				do
 				{
@@ -152,12 +153,13 @@ namespace MyGame
 
         public static void Login(string aUsername, string aPassword)
         {
-
+            //try new login
             Login tryLogin = new Login();
             tryLogin.Try(aUsername,aPassword);
 
             if (tryLogin.Authenticated)
             {
+                //display welcome message, quit windows form and open swingame
 				sucess = true;
                 MessageBox.Show("Login Successful.\nWelcome to People's Health Pharmacy","Welcome",MessageBoxButtons.OK,MessageBoxIcon.Asterisk);
                 Application.Exit();
@@ -165,6 +167,7 @@ namespace MyGame
             }
             else
             {
+                //display error message and try again
 				MessageBox.Show("Invalid username and password.\nPlease try again","Error",MessageBoxButtons.OKCancel,MessageBoxIcon.Error);
 
                 

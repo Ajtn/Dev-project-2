@@ -20,5 +20,15 @@ namespace MyGame
         {
             GameMain.Login(textBox1.Text,textBox2.Text);
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
