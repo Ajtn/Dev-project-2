@@ -121,6 +121,70 @@ namespace MyGame
             myReader.Close(); //close the data reader
             return data;
         }
+
+        public virtual string[,] runDatabaseQueryWithWhere(string[] dbHeaders, string columnToSearch, string valueToFind, string tableName) //Select all from a table
+        {
+            MySqlDataReader myReader;
+            string[,] data;
+
+            string myQuery = "SELECT * FROM " + tableName + " WHERE " + columnToSearch + " = " + valueToFind;  //sets the main query string
+            string myQuery2 = "SELECT COUNT(*) FROM " + tableName + " WHERE " + columnToSearch + " = " + valueToFind;  //the query string responsible for requesting the number of rows
+
+            //Create and initialise command objects
+            MySqlCommand myCommand2 = new MySqlCommand(myQuery2, myConnection);
+            MySqlCommand myCommand = new MySqlCommand(myQuery, myConnection);
+
+            int rows = Convert.ToInt32(myCommand2.ExecuteScalar()); //Runs the second command, returning a long converted to an int
+            myReader = myCommand.ExecuteReader(); //initialises the reader object
+
+            data = new string[rows, dbHeaders.Length]; //Set a new 2d array with the amount of rows and amount of columns
+
+            //Loop through each element in our data array, reading in the appropriate data from the database
+            for (int Y = 0; Y < rows; Y++)
+            {
+                myReader.Read(); //called each iteration of the loop in order to read in new rows
+                for (int i = 0; i < dbHeaders.Length; i++)
+                {
+                    data[Y, i] = myReader.GetString(dbHeaders[i]);
+                }
+            }
+
+            myReader.Close(); //close the data reader
+            return data;
+        }
+
+
+        public string[,] runDatabaseQueryWithWhere(string[] dbHeaders, string columnToSearch1, string columnToSearch2, string valueToFind1, string valueToFind2, string tableName) //Select all from a table
+        {
+            MySqlDataReader myReader;
+            string[,] data;
+
+            string myQuery = "SELECT * FROM " + tableName + " WHERE " + columnToSearch1 + " = " + valueToFind1 + " AND " + columnToSearch2 + " = " + valueToFind2 ;  //sets the main query string
+            string myQuery2 = "SELECT COUNT(*) FROM " + tableName + " WHERE " + columnToSearch1 + " = " + valueToFind1 + " AND " + columnToSearch2 + " = " + valueToFind2;  //the query string responsible for requesting the number of rows
+
+            //Create and initialise command objects
+            MySqlCommand myCommand2 = new MySqlCommand(myQuery2, myConnection);
+            MySqlCommand myCommand = new MySqlCommand(myQuery, myConnection);
+
+            int rows = Convert.ToInt32(myCommand2.ExecuteScalar()); //Runs the second command, returning a long converted to an int
+            myReader = myCommand.ExecuteReader(); //initialises the reader object
+
+            data = new string[rows, dbHeaders.Length]; //Set a new 2d array with the amount of rows and amount of columns
+
+            //Loop through each element in our data array, reading in the appropriate data from the database
+            for (int Y = 0; Y < rows; Y++)
+            {
+                myReader.Read(); //called each iteration of the loop in order to read in new rows
+                for (int i = 0; i < dbHeaders.Length; i++)
+                {
+                    data[Y, i] = myReader.GetString(dbHeaders[i]);
+                }
+            }
+
+            myReader.Close(); //close the data reader
+            return data;
+        }
+
         //This method selects from two tables, linking them via an inner join.
         //tableOne and tableTwo represent the names of the tables that we wish to join.
         //columnsTableOne and columnsTableTwo represent the columns from each table we wish to display.
@@ -352,9 +416,16 @@ namespace MyGame
         
         //This method deletes a database row, given a particular ID.
         //This method is incompatible with the new database and must be reworked
-        public void deleteDatabaseRow(string columnName, string valueToFind, string tableName )
+        public virtual void deleteDatabaseRow(string columnName, string valueToFind, string tableName )
         {
             string myQuery = "DELETE FROM " + tableName + " WHERE " + columnName + " = " + valueToFind;
+            MySqlCommand myCommand = new MySqlCommand(myQuery, myConnection);
+            myCommand.ExecuteNonQuery();
+        }
+
+        public void deleteDatabaseRow(string columnName1, string columnName2, string valueToFind1, string valueToFind2, string tableName)
+        {
+            string myQuery = "DELETE FROM " + tableName + " WHERE " + columnName1 + " = " + valueToFind1 + " AND " + columnName2 + " = " + valueToFind2;
             MySqlCommand myCommand = new MySqlCommand(myQuery, myConnection);
             myCommand.ExecuteNonQuery();
         }
