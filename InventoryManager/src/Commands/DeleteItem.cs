@@ -109,7 +109,6 @@ namespace MyGame
                     {
                         GameMain.inventoryDB.deleteDatabaseRow("ItemID", row[0], "AvailableItems");
                         GameMain.inventoryDB.deleteDatabaseRow("ItemID", row[0], "Item");
-                        GameMain.inventoryDB.deleteDatabaseRow("ItemID", row[0], "Item");
                     }
 
                     
