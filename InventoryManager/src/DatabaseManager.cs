@@ -650,6 +650,31 @@ namespace MyGame
             System.IO.File.AppendAllLines("csv.txt", lTemp);
         }
 
+        public void updateTable(string tableName, string[] categoriesToUpdate, string[] valuesToInsert, string categoryToCompare, string valueToCompare )
+        {
+            string myQuery;
 
+            myQuery = "UPDATE `" + tableName + "` SET ";
+
+            for (int i = 0; i < categoriesToUpdate.Length ; i++)
+            {
+                if (categoriesToUpdate[i] != null)
+                {
+                    myQuery += "`" + categoriesToUpdate[i].Replace(" ", string.Empty) +"`='" + valuesToInsert[i] + "'";
+                        
+                        if ((i < (categoriesToUpdate.Length) - 1))
+                        {
+                          myQuery += " , ";
+                        }
+                }
+            }
+
+            myQuery += " WHERE " + "`" + categoryToCompare + "`=" + valueToCompare;
+
+            MySqlCommand myCommand = new MySqlCommand(myQuery, myConnection);
+
+            myCommand.ExecuteNonQuery();
+
+        }
     }
 }

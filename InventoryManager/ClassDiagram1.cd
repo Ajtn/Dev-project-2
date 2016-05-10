@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MyGame.Add" Collapsed="true">
+    <Position X="1.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\Commands\Add.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyGame.Command" Collapsed="true">
+    <Position X="15" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\Commands\Command.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyGame.DeleteID" Collapsed="true">
+    <Position X="12.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\Commands\DeleteID.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyGame.DeleteItem" Collapsed="true">
+    <Position X="17.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\Commands\DeleteItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyGame.DisplayCurrentStockTable" Collapsed="true">
+    <Position X="21.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\Commands\DisplayCurrentStockTable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyGame.DisplayItemTable" Collapsed="true">
+    <Position X="26.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\Commands\DisplayItemTable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyGame.DisplayOrdersTable" Collapsed="true">
+    <Position X="3.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\Commands\DisplayOrdersTable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyGame.DisplayTransactionsTable" Collapsed="true">
+    <Position X="8.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\Commands\DisplayTransactionsTable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyGame.EditItem" Collapsed="true">
+    <Position X="15" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\Commands\EditItem.cs</FileName>
+      <NewMemberFileName>src\Commands\Empty.cs</NewMemberFileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyGame.Exit" Collapsed="true">
+    <Position X="19.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\Commands\Exit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyGame.GetReport" Collapsed="true">
+    <Position X="24" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\Commands\GetReport.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyGame.ScrollDown" Collapsed="true">
+    <Position X="28.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\Commands\ScrollDown.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyGame.ScrollUp" Collapsed="true">
+    <Position X="6" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\Commands\ScrollUp.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyGame.SetField" Collapsed="true">
+    <Position X="10.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\Commands\SetField.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyGame.AddItemForm" Collapsed="true">
+    <Position X="31" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAQAAAAAAAADAAAAAAAAAAAAIAAAAAM=</HashCode>
+      <FileName>src\Forms\AddItemForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyGame.AddOrderForm" Collapsed="true">
+    <Position X="32.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAQAAAAAAAADAAAAAAAAAAAAIAAAAAM=</HashCode>
+      <FileName>src\Forms\AddOrderForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyGame.AddTransactionsForm" Collapsed="true">
+    <Position X="34.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAQAAAAAAAADAAAAAAAAAAAAIAAAAAM=</HashCode>
+      <FileName>src\Forms\AddTransactionsForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyGame.GetDateForm" Collapsed="true">
+    <Position X="34.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAQAAAAAAAADAAAAAAAAAAAAIAAAAAM=</HashCode>
+      <FileName>src\Forms\GetDateForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyGame.SetForm" Collapsed="true">
+    <Position X="31" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAQAAAAAAAADAAAAAAAAAAAAIAAAAAM=</HashCode>
+      <FileName>src\Forms\SetForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyGame.Button" Collapsed="true">
+    <Position X="0.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEEAAAgAAAAAAAAAKAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>src\UIElements\Button.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyGame.ClickableElement" Collapsed="true">
+    <Position X="2.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAEAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\UIElements\ClickableElement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyGame.Scrollbar" Collapsed="true">
+    <Position X="2.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgABAAQAwAAAAAAAAACAAABAAAAACAAAAAAAAA=</HashCode>
+      <FileName>src\UIElements\Scrollbar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyGame.Table" Collapsed="true">
+    <Position X="5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAEgAAQAhAAAkQAAYAAhCAGQAAAAUAAEAI4IFAAAgA=</HashCode>
+      <FileName>src\UIElements\Table.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyGame.UIElement" Collapsed="true">
+    <Position X="2.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAEABAAAAAEABAAgAGAQAACACAAAAA=</HashCode>
+      <FileName>src\UIElements\UIElement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyGame.DatabaseManager" Collapsed="true">
+    <Position X="31" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAKAAIAAAAAAAAAABAAACAAAIAAAEQAAAAAAASAAAA=</HashCode>
+      <FileName>src\DatabaseManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyGame.GameMain" Collapsed="true">
+    <Position X="32.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAACAAAAgAkAAAAEAAQJIRAAAAIAAAIAABAAAAAA=</HashCode>
+      <FileName>src\GameMain.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

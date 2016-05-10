@@ -1,3 +1,4 @@
 C:\Users\Lionel\Desktop\DP2\Dev-project-2\InventoryManager\bin\Debug\MyGame.exe.config
 C:\Users\Lionel\Desktop\DP2\Dev-project-2\Dev-project-2\InventoryManager\bin\Debug\MyGame.exe.config
 C:\Users\Marcus Crisafi\Desktop\Clone2\Dev-project-2\InventoryManager\bin\Debug\MyGame.exe.config
+C:\Users\Lionel\Desktop\DP2 reclone\Dev-project-2\InventoryManager\bin\Debug\MyGame.exe.config

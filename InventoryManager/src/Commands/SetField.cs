@@ -10,8 +10,9 @@ namespace MyGame
     {
         public override void Do(int x, int y)
         {
-            if (GameMain.pTable != null)
+            if (GameMain.pTable.pTableName == "Item")
             {
+
             }
         }
     }
