@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using MySql.Data.MySqlClient;
 using SwinGameSDK;
+using System.Windows.Forms;
 
 namespace MyGame
 {
@@ -23,13 +24,24 @@ namespace MyGame
         public static Table pTable { get { return fTable; } set { fTable = value; } }
         public static List<Button> pTabButtons { get { return fTabButtons; } }
 
+        private static Bitmap _Background;
+
         public static void Main()
         {
-            SwinGame.OpenGraphicsWindow("Peoples Health Pharmacy", 1220, 520);
+            SwinGame.OpenGraphicsWindow("lLAMA: Peoples Health Pharmacy", 1220, 510);
             SwinGame.LoadFontNamed("courier", "cour.ttf", 14);
+
+            _Background = SwinGame.LoadBitmap(SwinGame.PathToResource("test.bmp", ResourceKind.BitmapResource));
+
+            SwinGame.ClearScreen(Color.White);
+            SwinGame.DrawBitmap(_Background, 0, 0);
+            SwinGame.RefreshScreen();
 
             inventoryDB.openDBConnection();
             PopulateElements();
+
+            SwinGame.ShowSwinGameSplashScreen();
+
 
             do
             {
