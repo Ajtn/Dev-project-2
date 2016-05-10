@@ -444,6 +444,128 @@ namespace MyGame
             else return true;
         }
 
-        
+        public void ExportAsCSV(string tableOne, string tableTwo, string tableThree,
+                                                  string[] ColumnsTableOne, string[] ColumnsTableTwo, string[] ColumnsTableThree,
+                                                  string ColumnToJoinA, string ColumnToJoinB, string DateStart, string DateEnd)
+        {
+            MySqlDataReader myReader;
+            string[,] data;
+
+            for (int i = 0; i < ColumnsTableOne.Length; i++)
+            {
+                ColumnsTableOne[i] = ColumnsTableOne[i].Insert(0, "t1.");
+            }
+
+            for (int i = 0; i < ColumnsTableTwo.Length; i++)
+            {
+                ColumnsTableTwo[i] = ColumnsTableTwo[i].Insert(0, "t2.");
+            }
+
+            for (int i = 0; i < ColumnsTableThree.Length; i++)
+            {
+                ColumnsTableThree[i] = ColumnsTableThree[i].Insert(0, "t3.");
+            }
+
+            tableOne += " t1";
+            tableTwo += " t2";
+            tableThree += " t3";
+
+            string myQuery = "SELECT ";
+
+            for (int i = 0; i < ColumnsTableOne.Length; i++)
+            {
+                myQuery += ColumnsTableOne[i];
+                myQuery += ", ";
+            }
+
+            for (int i = 0; i < ColumnsTableTwo.Length; i++)
+            {
+                myQuery += ColumnsTableTwo[i];
+                myQuery += ", ";
+            }
+
+            for (int i = 0; i < ColumnsTableThree.Length; i++)
+            {
+                myQuery += ColumnsTableThree[i];
+
+                if (i != (ColumnsTableThree.Length - 1))
+                {
+                    myQuery += ", ";
+                }
+                else myQuery += " ";
+            }
+
+            myQuery += "FROM " + tableOne + " INNER JOIN " + tableTwo + " ON " + "t1." + ColumnToJoinA + "= t2." + ColumnToJoinA + " INNER JOIN " + tableThree + " ON " + "t1." + ColumnToJoinB + "= t3." + ColumnToJoinB + " WHERE " + ColumnsTableTwo[0] + " BETWEEN " + "'" + DateStart + "'" + " AND" + "'" + DateEnd + "'";
+            string myQuery2 = "SELECT COUNT(*) FROM " + tableOne + " INNER JOIN " + tableTwo + " ON " + "t1." + ColumnToJoinA + "= t2." + ColumnToJoinA + " INNER JOIN " + tableThree + " ON " + "t1." + ColumnToJoinB + "= t3." + ColumnToJoinB + " WHERE " + ColumnsTableTwo[0] + " BETWEEN " + "'" + DateStart + "'" + " AND" + "'" + DateEnd + "'"; //the query string responsible for requesting the number of rows
+
+            //Create and initialise command objects
+            MySqlCommand myCommand2 = new MySqlCommand(myQuery2, myConnection);
+            MySqlCommand myCommand = new MySqlCommand(myQuery, myConnection);
+
+            int rows = Convert.ToInt32(myCommand2.ExecuteScalar()); //Runs the second command, returning a long converted to an int
+            myReader = myCommand.ExecuteReader(); //initialises the reader object
+
+            for (int i = 0; i < ColumnsTableOne.Length; i++)
+            {
+                ColumnsTableOne[i] = ColumnsTableOne[i].Remove(0, 3);
+            }
+
+            for (int i = 0; i < ColumnsTableTwo.Length; i++)
+            {
+                ColumnsTableTwo[i] = ColumnsTableTwo[i].Remove(0, 3);
+            }
+
+            for (int i = 0; i < ColumnsTableThree.Length; i++)
+            {
+                ColumnsTableThree[i] = ColumnsTableThree[i].Remove(0, 3);
+            }
+
+            data = new string[rows, ColumnsTableOne.Length + ColumnsTableTwo.Length + ColumnsTableThree.Length]; //Set a new 2d array with the amount of rows and amount of columns
+
+            int temp = 0;
+
+            //Loop through each element in our data array, reading in the appropriate data from the database
+            for (int Y = 0; Y < rows; Y++)
+            {
+                myReader.Read(); //called each iteration of the loop in order to read in new rows
+                for (int i = 0; i < ColumnsTableOne.Length; i++)
+                {
+                    data[Y, i] = myReader.GetString(ColumnsTableOne[i]);
+                    temp = i;
+
+                }
+                temp++;
+                for (int i = 0; i < ColumnsTableTwo.Length; i++)
+                {
+                    data[Y, temp] = myReader.GetString(ColumnsTableTwo[i]);
+                    temp++;
+                }
+                for (int i = 0; i < ColumnsTableThree.Length; i++)
+                {
+                    data[Y, temp] = myReader.GetString(ColumnsTableThree[i]);
+                    temp++;
+                }
+
+            }
+
+            myReader.Close(); //close the data reader
+
+            // WRITE TO TEXT FILE WITH CSV
+            string[] lTemp = new string[data.GetLength(0)];
+
+            for (int j = 0; j < data.GetLength(0); j++)
+            {
+                for (int i = 0; i < data.GetLength(1); i++)
+                {
+                    if (i == 0)
+                        lTemp[j] += (data[j, i]);
+                    else
+                        lTemp[j] += (", " + data[j, i]);
+                }
+            }
+            System.IO.File.AppendAllLines("csv.txt", lTemp);
+        }
+
+
     }
 }

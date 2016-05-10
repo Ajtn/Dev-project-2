@@ -103,6 +103,7 @@
     <Compile Include="src\Commands\DisplayTransactionsTable.cs" />
     <Compile Include="src\Commands\Empty.cs" />
     <Compile Include="src\Commands\DisplayCurrentStockTable.cs" />
+    <Compile Include="src\Commands\GetReport.cs" />
     <Compile Include="src\Commands\ScrollDown.cs" />
     <Compile Include="src\Commands\ScrollUp.cs" />
     <Compile Include="src\Commands\SetField.cs" />
@@ -110,6 +111,7 @@
     <Compile Include="src\Forms\AddItemForm.cs" />
     <Compile Include="src\Forms\AddOrderForm.cs" />
     <Compile Include="src\Forms\AddTransactionsForm.cs" />
+    <Compile Include="src\Forms\GetDateForm.cs" />
     <Compile Include="src\Forms\SetForm.cs" />
     <Compile Include="src\GameMain.cs" />
     <Compile Include="src\UIElements\Button.cs" />

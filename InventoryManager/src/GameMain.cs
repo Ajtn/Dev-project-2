@@ -25,7 +25,7 @@ namespace MyGame
 
         public static void Main()
         {
-            SwinGame.OpenGraphicsWindow("Peoples Health Pharmacy", 1220, 510);
+            SwinGame.OpenGraphicsWindow("Peoples Health Pharmacy", 1220, 520);
             SwinGame.LoadFontNamed("courier", "cour.ttf", 14);
 
             inventoryDB.openDBConnection();
@@ -127,15 +127,9 @@ namespace MyGame
             fTabButtons.Add(new Button(9 + TABLE_WIDTH, 49, 150, 40, Color.DodgerBlue, "Entire Catalogue", new DisplayItemTable()));
             fTabButtons.Add(new Button(9 + TABLE_WIDTH, 88, 150, 40, Color.DodgerBlue, "Stock Orders", new DisplayOrdersTable()));
             fTabButtons.Add(new Button(9 + TABLE_WIDTH, 127, 150, 40, Color.DodgerBlue, "Transactions", new DisplayTransactionsTable()));         
-            fTabButtons.Add(new Button(9 + TABLE_WIDTH, 166, 150, 40, Color.DodgerBlue, "Empty", new Empty()));
-            fTabButtons.Add(new Button(9 + TABLE_WIDTH, 205, 150, 40, Color.DodgerBlue, "Empty", new Empty()));
-            fTabButtons.Add(new Button(9 + TABLE_WIDTH, 244, 150, 40, Color.DodgerBlue, "Empty", new Empty()));
-            fTabButtons.Add(new Button(9 + TABLE_WIDTH, 283, 150, 40, Color.DodgerBlue, "Empty", new Empty()));
-            fTabButtons.Add(new Button(9 + TABLE_WIDTH, 322, 150, 40, Color.DodgerBlue, "Empty", new Empty()));
 
             fFunctionButtons.Add(new Button(20 + TABLE_WIDTH, 373, 90, 40, Color.Aqua, "Add", new Add()));
-            fFunctionButtons.Add(new Button(20 + TABLE_WIDTH, 413, 135, 40, Color.Aqua, "Montly Report", new Empty()));
-            fFunctionButtons.Add(new Button(20 + TABLE_WIDTH, 453, 135, 40, Color.Aqua, "Weekly Report", new Empty()));
+            fFunctionButtons.Add(new Button(20 + TABLE_WIDTH, 453, 135, 40, Color.Aqua, "Export as CSV", new GetReport()));
         }
     }
 }
