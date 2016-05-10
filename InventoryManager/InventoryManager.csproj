@@ -103,6 +103,7 @@
     <Compile Include="src\Commands\DisplayTransactionsTable.cs" />
     <Compile Include="src\Commands\Empty.cs" />
     <Compile Include="src\Commands\DisplayCurrentStockTable.cs" />
+    <Compile Include="src\Commands\Exit.cs" />
     <Compile Include="src\Commands\GetReport.cs" />
     <Compile Include="src\Commands\ScrollDown.cs" />
     <Compile Include="src\Commands\ScrollUp.cs" />

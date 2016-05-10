@@ -1,11 +1,2 @@
-4, 2/05/2016 12:00:00 AM, Contact lens fluid, 15, 8
-1, 2/05/2016 12:00:00 AM, Medicine, 20, 9.99
-2, 2/05/2016 12:00:00 AM, Contact lens fluid, 15, 8
-3, 3/05/2016 12:00:00 AM, Viagra, 35, 10
-1, 3/05/2016 12:00:00 AM, Condoms, 8, 3
-1, 3/05/2016 12:00:00 AM, NIB Pen, 2, 0.3
-3, 3/05/2016 12:00:00 AM, Riddelin, 35, 20
-5, 4/05/2016 12:00:00 AM, Panadol Rapid, 14, 8
-44, 5/05/2016 12:00:00 AM, Denture cleaner, 3, 1
-25, 8/05/2016 12:00:00 AM, Hair gel, 8.99, 5
-22, 4/05/2016 12:00:00 AM, Contact lens fluid, 15, 8
+6, 31/05/2009 12:00:00 AM, Panadol Rapid, 14, 8
+10, 2/10/2001 12:00:00 AM, Mdma, 100, 90
