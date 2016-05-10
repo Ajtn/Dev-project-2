@@ -25,31 +25,36 @@ namespace MyGame
         public static List<Button> pTabButtons { get { return fTabButtons; } }
 
         private static Bitmap _Background;
-        public static bool sucess = false;
+
+        private static bool sucess = false;
 
         public static void Main()
         {
-
+            //Load the default login form
             Login_Form start = new Login_Form();
             Application.Run(start);
 
             //Swingame file only runs if logged in.
             if (sucess)
             {
+                //Start Swingame application
                 SwinGame.OpenGraphicsWindow("lLAMA: Peoples Health Pharmacy", 1220, 510);
-                SwinGame.LoadFontNamed("courier", "cour.ttf", 14);
 
+                //load resources
+                SwinGame.LoadFontNamed("courier", "cour.ttf", 14);
                 _Background = SwinGame.LoadBitmap(SwinGame.PathToResource("test.bmp", ResourceKind.BitmapResource));
 
+                //Draw loading screen
                 SwinGame.ClearScreen(Color.White);
                 SwinGame.DrawBitmap(_Background, 0, 0);
                 SwinGame.RefreshScreen();
 
+                //open database connection
                 inventoryDB.openDBConnection();
                 PopulateElements();
 
+                //Show splash screen when database connection is open
                 SwinGame.ShowSwinGameSplashScreen();
-
 
                 do
                 {
@@ -57,7 +62,6 @@ namespace MyGame
                     HandleInput();
                 } while (!SwinGame.WindowCloseRequested());
             }
-
         }
 
         public static void HandleInput()
@@ -166,14 +170,11 @@ namespace MyGame
                 sucess = true;
                 MessageBox.Show("Login Successful.\nWelcome to People's Health Pharmacy", "Welcome", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 Application.Exit();
-
             }
             else
             {
                 //display error message and try again
                 MessageBox.Show("Invalid username and password.\nPlease try again", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
-
-
             }
         }
     }
