@@ -68,7 +68,7 @@ namespace MyGame
                             }
 
                         }
-                        else cancelDelete = true;
+                       
 
                     }
 
