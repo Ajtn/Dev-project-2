@@ -51,8 +51,16 @@ namespace MyGame
 
             for (int i = 0; i < fSetButtons.Length; i++)
             {
-                fSetButtons[i] = new Button(aX + fListWidth, aY + CELL_HEIGHT * i + CELL_HEIGHT, SET_WIDTH, CELL_HEIGHT, Color.PowderBlue, "Set", new SetField());
-                fDeleteButtons[i] = new Button(aX + fListWidth + SET_WIDTH, aY + CELL_HEIGHT * i + CELL_HEIGHT, DELETE_WIDTH, CELL_HEIGHT, Color.PowderBlue, "Delete", new DeleteID());
+                if (fTableName == "Item")
+                {
+                    fSetButtons[i] = new Button(aX + fListWidth, aY + CELL_HEIGHT * i + CELL_HEIGHT, SET_WIDTH, CELL_HEIGHT, Color.PowderBlue, "Set", new SetField());
+                    fDeleteButtons[i] = new Button(aX + fListWidth + SET_WIDTH, aY + CELL_HEIGHT * i + CELL_HEIGHT, DELETE_WIDTH, CELL_HEIGHT, Color.PowderBlue, "Delete", new DeleteItem());
+                }
+                else
+                {
+                    fSetButtons[i] = new Button(aX + fListWidth, aY + CELL_HEIGHT * i + CELL_HEIGHT, SET_WIDTH, CELL_HEIGHT, Color.PowderBlue, "Set", new SetField());
+                    fDeleteButtons[i] = new Button(aX + fListWidth + SET_WIDTH, aY + CELL_HEIGHT * i + CELL_HEIGHT, DELETE_WIDTH, CELL_HEIGHT, Color.PowderBlue, "Delete", new DeleteID());
+                }
             }
         }
 
@@ -136,6 +144,22 @@ namespace MyGame
                     return Int32.Parse(pData[i + pBuffer, 0]);
             }
             return 0;
+        }
+
+        public string[] GetRow(int x, int y)
+        {
+            string[] lTemp = new string[fData.GetLength(1)];
+            for (int i = 0; i < GameMain.pTable.pTotalDisplayed; i++)
+            {
+                if (y > fY + CELL_HEIGHT * (i + 1) && y < fY + CELL_HEIGHT * (i + 2))
+                {
+                    for (int j = 0; j < fData.GetLength(1); j++)
+                    {
+                        lTemp[j] = fData[i + pBuffer, j];
+                    }
+                }
+            }
+            return lTemp;
         }
 
 
