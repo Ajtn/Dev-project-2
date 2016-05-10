@@ -128,7 +128,7 @@ namespace MyGame
             fTabButtons.Add(new Button(9 + TABLE_WIDTH, 88, 150, 40, Color.DodgerBlue, "Stock Orders", new DisplayOrdersTable()));
             fTabButtons.Add(new Button(9 + TABLE_WIDTH, 127, 150, 40, Color.DodgerBlue, "Transactions", new DisplayTransactionsTable()));         
 
-            fFunctionButtons.Add(new Button(20 + TABLE_WIDTH, 373, 90, 40, Color.Aqua, "Add", new Add()));
+            fFunctionButtons.Add(new Button(20 + TABLE_WIDTH, 407, 135, 40, Color.Aqua, "Add", new Add()));
             fFunctionButtons.Add(new Button(20 + TABLE_WIDTH, 453, 135, 40, Color.Aqua, "Export as CSV", new GetReport()));
         }
     }

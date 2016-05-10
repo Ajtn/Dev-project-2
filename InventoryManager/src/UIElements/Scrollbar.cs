@@ -27,7 +27,7 @@ namespace MyGame
             if (GameMain.pTable.pData.GetLength(0) - GameMain.pTable.pTotalDisplayed == 1)
                 fBarSize = fScrollSize / 2;
             else
-                fBarSize = fScrollSize + 10;
+                fBarSize = fScale + 30;
 
             fIncrementSub = fBarSize / (GameMain.pTable.pData.GetLength(0) - GameMain.pTable.pTotalDisplayed);
 
@@ -48,7 +48,7 @@ namespace MyGame
             SwinGame.FillRectangle(Color.LightSkyBlue, fX, fY + Table.SCROLL_WIDTH, Table.SCROLL_WIDTH, (int)fScrollSize);
             SwinGame.DrawRectangle(Color.Black, fX, fY + Table.SCROLL_WIDTH, Table.SCROLL_WIDTH, (int)fScrollSize);
 
-            if (GameMain.pTable.pTotalDisplayed > 19)
+            if (GameMain.pTable.pData.GetLength(0) > GameMain.pTable.pTotalDisplayed)
             {
                 SwinGame.FillRectangle(Color.DodgerBlue, fX, (int)(fY + Table.SCROLL_WIDTH + (fScale * GameMain.pTable.pBuffer) - (fIncrementSub * GameMain.pTable.pBuffer)), Table.SCROLL_WIDTH, (int)fBarSize);
                 SwinGame.DrawRectangle(Color.Black, fX + fWidth - Table.SCROLL_WIDTH, (int)(fY + Table.SCROLL_WIDTH + (fScale * GameMain.pTable.pBuffer) - (fIncrementSub * GameMain.pTable.pBuffer)), Table.SCROLL_WIDTH, (int)fBarSize);

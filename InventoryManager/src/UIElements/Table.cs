@@ -83,7 +83,7 @@ namespace MyGame
         public void DrawData()
         {
             // print background
-            for (int i = 0; i < fData.GetLength(0); i++)
+            for (int i = 0; i < pTotalDisplayed; i++)
             {
                 // print a darker blue if mod 2 is = 0
                 if (i % 2 != 0)
@@ -97,17 +97,23 @@ namespace MyGame
             {
                 for (int i = 0; i < fData.GetLength(1); i++)
                 {
-                    // print cell outline
-                    if (i == 0)
-                        SwinGame.DrawRectangle(Color.Black, fX, CELL_HEIGHT * j + fY + CELL_HEIGHT, ID_WIDTH, CELL_HEIGHT);
-                    else
-                        SwinGame.DrawRectangle(Color.Black, ID_WIDTH + (fCellWidth * (i - 1)) + fX, CELL_HEIGHT * j + fY + CELL_HEIGHT, fCellWidth, CELL_HEIGHT);
-
                     // print text
                     if (i == 0)
                         SwinGame.DrawText(fData[j, 0], Color.Black, fX + TEXT_BORDER, (float)(CELL_HEIGHT * (j - fBuffer) + TEXT_BORDER + fY + CELL_HEIGHT));
                     else
                         SwinGame.DrawText(fData[j, i], Color.Black, (ID_WIDTH + (fCellWidth * (i - 1))) + fX + TEXT_BORDER, CELL_HEIGHT * (j - fBuffer) + fY + CELL_HEIGHT + TEXT_BORDER);
+                }
+            }
+
+            for (int j = 0; j < fTotalDisplayed; j++)
+            {
+                for (int i = 0; i < fData.GetLength(1); i++)
+                {
+                    // print cell outline
+                    if (i == 0)
+                        SwinGame.DrawRectangle(Color.Black, fX, CELL_HEIGHT * j + fY + CELL_HEIGHT, ID_WIDTH, CELL_HEIGHT);
+                    else
+                        SwinGame.DrawRectangle(Color.Black, ID_WIDTH + (fCellWidth * (i - 1)) + fX, CELL_HEIGHT * j + fY + CELL_HEIGHT, fCellWidth, CELL_HEIGHT);
                 }
             }
         }
