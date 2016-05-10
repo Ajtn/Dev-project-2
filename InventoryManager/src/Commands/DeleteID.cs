@@ -11,15 +11,15 @@ namespace MyGame
     {
         public override void Do(int x, int y)
         {
-            int lSelectedID;
+            // string[] lSelectedID = {"3"};
 
             DialogResult lTemp = MessageBox.Show("Are you sure you want to delete this record?", "DELETE RECORD", MessageBoxButtons.YesNo);
 
             if (lTemp == DialogResult.Yes)
             {
-                lSelectedID = GameMain.pTable.GetID(x, y);
-                GameMain.inventoryDB.deleteDatabaseRow(lSelectedID,  GameMain.pTable.pTableName);
-                MessageBox.Show("ID: " + lSelectedID + " successfully deleted.", "Success!", MessageBoxButtons.OK);
+                //lSelectedID = GameMain.pTable.GetID(x, y);
+                //GameMain.inventoryDB.deleteDatabaseRow(lSelectedID,  GameMain.pTable.pTableName);
+                //MessageBox.Show("ID: " + lSelectedID + " successfully deleted.", "Success!", MessageBoxButtons.OK);
                 GameMain.pCurrentTable.OnClick(SwinGame.MousePosition());
             }
         }
