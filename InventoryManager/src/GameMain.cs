@@ -25,29 +25,38 @@ namespace MyGame
         public static List<Button> pTabButtons { get { return fTabButtons; } }
 
         private static Bitmap _Background;
+        public static bool sucess = false;
 
         public static void Main()
         {
-            SwinGame.OpenGraphicsWindow("lLAMA: Peoples Health Pharmacy", 1220, 510);
-            SwinGame.LoadFontNamed("courier", "cour.ttf", 14);
 
-            _Background = SwinGame.LoadBitmap(SwinGame.PathToResource("test.bmp", ResourceKind.BitmapResource));
+            Login_Form start = new Login_Form();
+            Application.Run(start);
 
-            SwinGame.ClearScreen(Color.White);
-            SwinGame.DrawBitmap(_Background, 0, 0);
-            SwinGame.RefreshScreen();
-
-            inventoryDB.openDBConnection();
-            PopulateElements();
-
-            SwinGame.ShowSwinGameSplashScreen();
-
-
-            do
+            //Swingame file only runs if logged in.
+            if (sucess)
             {
-                Draw();
-                HandleInput();
-            } while (!SwinGame.WindowCloseRequested());
+                SwinGame.OpenGraphicsWindow("lLAMA: Peoples Health Pharmacy", 1220, 510);
+                SwinGame.LoadFontNamed("courier", "cour.ttf", 14);
+
+                _Background = SwinGame.LoadBitmap(SwinGame.PathToResource("test.bmp", ResourceKind.BitmapResource));
+
+                SwinGame.ClearScreen(Color.White);
+                SwinGame.DrawBitmap(_Background, 0, 0);
+                SwinGame.RefreshScreen();
+
+                inventoryDB.openDBConnection();
+                PopulateElements();
+
+                SwinGame.ShowSwinGameSplashScreen();
+
+
+                do
+                {
+                    Draw();
+                    HandleInput();
+                } while (!SwinGame.WindowCloseRequested());
+            }
 
         }
 
@@ -143,6 +152,29 @@ namespace MyGame
             fFunctionButtons.Add(new Button(20 + TABLE_WIDTH, 370, 135, 40, Color.Aqua, "Add", new Add()));
             fFunctionButtons.Add(new Button(20 + TABLE_WIDTH, 420, 135, 40, Color.Aqua, "Export as CSV", new GetReport()));
             fFunctionButtons.Add(new Button(20 + TABLE_WIDTH, 470, 135, 40, Color.Aqua, "Exit", new Exit()));
+        }
+
+        public static void Login(string aUsername, string aPassword)
+        {
+            //try new login
+            Login tryLogin = new Login();
+            tryLogin.Try(aUsername, aPassword);
+
+            if (tryLogin.Authenticated)
+            {
+                //display welcome message, quit windows form and open swingame
+                sucess = true;
+                MessageBox.Show("Login Successful.\nWelcome to People's Health Pharmacy", "Welcome", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                Application.Exit();
+
+            }
+            else
+            {
+                //display error message and try again
+                MessageBox.Show("Invalid username and password.\nPlease try again", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+
+
+            }
         }
     }
 }

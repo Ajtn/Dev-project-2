@@ -95,6 +95,11 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="src\Commands\Add.cs" />
     <Compile Include="src\Commands\Command.cs" />
     <Compile Include="src\Commands\DeleteID.cs" />
@@ -106,6 +111,7 @@
     <Compile Include="src\Commands\DisplayCurrentStockTable.cs" />
     <Compile Include="src\Commands\Exit.cs" />
     <Compile Include="src\Commands\GetReport.cs" />
+    <Compile Include="src\Commands\Login.cs" />
     <Compile Include="src\Commands\ScrollDown.cs" />
     <Compile Include="src\Commands\ScrollUp.cs" />
     <Compile Include="src\Commands\SetField.cs" />
@@ -121,6 +127,12 @@
     <Compile Include="src\UIElements\Scrollbar.cs" />
     <Compile Include="src\UIElements\Table.cs" />
     <Compile Include="src\UIElements\UIElement.cs" />
+    <Compile Include="Login_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login_Form.Designer.cs">
+      <DependentUpon>Login_Form.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
@@ -221,6 +233,19 @@
     <WinLibraryFiles Include="lib\win\smpeg.dll" />
     <WinLibraryFiles Include="lib\win\swingame.rc" />
     <WinLibraryFiles Include="lib\win\zlib1.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\images\lLama_Log_Medium.png" />
+    <Content Include="Resources\images\login.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Login_Form.resx">
+      <DependentUpon>Login_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Target Name="CopyFiles">
     <Copy SourceFiles="@(MacLibraryFiles)" DestinationFolder="$(OutDir)" />
